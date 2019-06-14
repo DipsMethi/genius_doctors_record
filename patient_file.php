@@ -353,7 +353,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="summary">Summary:</label>
-                                                        <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+                                                        <textarea class="form-control" rows="5" id="comment" name="summary"></textarea>
                                                       </div>
                                                 </div>                                         
                                             </div>
@@ -361,7 +361,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="Prescription">Prescription:</label>
-                                                    <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+                                                    <textarea class="form-control" rows="5" id="comment" name="prescription *"></textarea>
                                                   </div>
                                             </div>
                                                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">SAVE</button>                                        </div>

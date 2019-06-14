@@ -48,8 +48,8 @@
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Patient File:</h6>
-                <a class="collapse-item" href="utilities-color.html">Write</a>
-                <a class="collapse-item" href="utilities-border.html">Read</a>    
+                <a class="collapse-item" href="utilities-color.php">Write</a>
+                <a class="collapse-item" href="utilities-border.php">Read</a>    
               </div>
             </div>
           </li>
@@ -334,10 +334,25 @@
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
 
+          <?php
+              if(isset($_POST['record']))
+              {
+                
+              }
+          ?>
+
+          <form method="POST" action="#">
+              <label>Suspect disease:</label><textarea rows="1px" cols="90px"></textarea>
+              <br><br>
+              <label>Prescription:</label><textarea rows="1px" cols="90px"></textarea>
+              <br><br>
+              <input type="submit" name="record" value="Record">
+          </form>
+
           <!-- Content Row -->
           <div class="row">
 
-        </div>
+          </div>
 
 
       </div>
