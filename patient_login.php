@@ -29,8 +29,8 @@
 
               <form action="router.php" method="POST">
                   <div class="form-label-group">
-                      <input type="text" id="id" class="form-control" placeholder="ID" name="id" required>
-                      <label for="id">ID No</label>
+                      <input type="password" id="idNumber" class="form-control" placeholder="text" required>
+                      <label for="idNumber">ID No</label>
                     </div>
                   <div class="form-label-group">
                     <input type="password" id="password" class="form-control" placeholder="Password" name="password" required>
