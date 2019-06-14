@@ -329,31 +329,31 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Blood Pressure *"
-                                                            value="" />
+                                                            value="" id="bloodPressure" name="bloadPressure"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Heart Rate *"
-                                                            value="" />
+                                                            value="" id="heartRate" name="heartRate"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Blood Sugar *"
-                                                            value="" />
+                                                            value="" id="bloodSugar" name="bloodSugar" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Other *"
-                                                            value="" />
+                                                            value="" id="other" name="other"/>
                                                     </div>
                                                 </div>  
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="summary">Summary:</label>
-                                                        <textarea class="form-control" rows="5" id="comment" name="summary"></textarea>
+                                                        <textarea class="form-control" rows="5" id="summary" name="summary"></textarea>
                                                       </div>
                                                 </div>                                         
                                             </div>
@@ -361,10 +361,10 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="Prescription">Prescription:</label>
-                                                    <textarea class="form-control" rows="5" id="comment" name="prescription *"></textarea>
+                                                    <textarea class="form-control" rows="5" id="prescription" name="prescription *"></textarea>
                                                   </div>
                                             </div>
-                                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">SAVE</button>                                        </div>
+                                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="save" name="save" type="submit">SAVE</button>                                        </div>
                                     </div>
                                 </div>
                             </div>
