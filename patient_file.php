@@ -41,18 +41,10 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-              <i class="fa fa-book"></i>
-              <span>Medical Record</span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Patient File:</h6>
-                <a class="collapse-item" href="write-patient_file.html">Write</a>
-                <a class="collapse-item" href="utilities-border.html">Read</a>    
-              </div>
-            </div>
-          </li>
+        <a class="nav-link" href="patient_file.php">
+          <i class="fa fa-book"></i>
+          <span>Patient File</span></a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
                 <i class="fa fa-sticky-note" aria-hidden="true"></i>
@@ -336,19 +328,19 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Bload Pressure *"
+                                                        <input type="text" class="form-control" placeholder="Blood Pressure *"
                                                             value="" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Heart Beat *"
+                                                        <input type="text" class="form-control" placeholder="Heart Rate *"
                                                             value="" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Bload *"
+                                                        <input type="text" class="form-control" placeholder="Blood Sugar *"
                                                             value="" />
                                                     </div>
                                                 </div>
