@@ -337,31 +337,31 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Bload Pressure *"
-                                                            value="" />
+                                                            value="" name="blood_pressure" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Heart Beat *"
-                                                            value="" />
+                                                            value="" name="blood_sugar" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Bload *"
-                                                            value="" />
+                                                            value="" name="ht_rate" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Other *"
-                                                            value="" />
+                                                            value="" name="other/>
                                                     </div>
                                                 </div>  
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="summary">Summary:</label>
-                                                        <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+                                                        <textarea class="form-control" rows="5" id="comment" name="summary"></textarea>
                                                       </div>
                                                 </div>                                         
                                             </div>
@@ -369,7 +369,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="Prescription">Prescription:</label>
-                                                    <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+                                                    <textarea class="form-control" rows="5" id="comment" name="prescription *"></textarea>
                                                   </div>
                                             </div>
                                                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">SAVE</button>                                        </div>
