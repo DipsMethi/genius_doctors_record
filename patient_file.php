@@ -335,41 +335,25 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Heart Rate *"
-<<<<<<< HEAD
-                                                            value="" id="heartRate" name="heartRate"/>
-=======
                                                             value=""  name="heartRate"/>
->>>>>>> dfcfb849909e15d92b9103df48a965eb52ad3590
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Blood Sugar *"
-<<<<<<< HEAD
-                                                            value="" id="bloodSugar" name="bloodSugar" />
-=======
                                                             value="" name="bloodSugar"/>
->>>>>>> dfcfb849909e15d92b9103df48a965eb52ad3590
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Other *"
-<<<<<<< HEAD
-                                                            value="" id="other" name="other"/>
-=======
                                                             value="" name="other" />
->>>>>>> dfcfb849909e15d92b9103df48a965eb52ad3590
                                                     </div>
                                                 </div>  
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="summary">Summary:</label>
-<<<<<<< HEAD
-                                                        <textarea class="form-control" rows="5" id="summary" name="summary"></textarea>
-=======
                                                         <textarea class="form-control" rows="5" name="summary"></textarea>
->>>>>>> dfcfb849909e15d92b9103df48a965eb52ad3590
                                                       </div>
                                                 </div>                                         
                                             </div>
