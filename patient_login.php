@@ -17,14 +17,19 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
-              <h3 class="login-heading mb-4">Patience Login</h3>
+              <h3 class="login-heading mb-4">Patient Login</h3>
               <form>
                   <div class="form-label-group">
+<<<<<<< HEAD:patient_login.php
                       <input type="password" id="idNumber" class="form-control" placeholder="text" required>
                       <label for="idNumber">ID No</label>
+=======
+                      <input type="text" id="id" class="form-control" placeholder="ID" name="id" required>
+                      <label for="inputPassword">ID No</label>
+>>>>>>> 994ce4556255e5e3b99b365fae670e399849d0ae:patient_login.html
                     </div>
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
                   <label for="inputPassword">Password</label>
                 </div>
                 <div class="custom-control custom-checkbox mb-3">
