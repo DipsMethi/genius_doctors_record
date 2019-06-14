@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<?php
+
+  
+  
+  
+?>
+
 <div class="container-fluid">
    <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image1"></div>
@@ -18,15 +26,16 @@
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Patient Login</h3>
-              <form>
+
+              <form action="router.php" method="POST">
                   <div class="form-label-group">
                       <input type="text" id="id" class="form-control" placeholder="ID" name="id" required>
-                      <label for="inputPassword">ID No</label>
+                      <label for="id">ID No</label>
                     </div>
-                <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-                  <label for="inputPassword">Password</label>
-                </div>
+                  <div class="form-label-group">
+                    <input type="password" id="password" class="form-control" placeholder="Password" name="password" required>
+                    <label for="password">Password</label>
+                  </div>
                 <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input" id="customCheck1">
                     <label class="custom-control-label" for="customCheck1"><a class="small" href="partient_terms&condition.html">Terms and Condition</a></label>
@@ -36,6 +45,7 @@
                 <div class="text-center">
                   <a class="small" href="forgot--password.html">Forgot password?</a></div>
               </form>
+
             </div>
           </div>
         </div>
