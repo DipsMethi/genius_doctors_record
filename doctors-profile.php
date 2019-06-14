@@ -359,38 +359,38 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Last Name *"
-                                                            value="" />
+                                                        <input type="tel" class="form-control" placeholder="Last Name *"
+                                                            value="" id="lastName" name="lastname" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="tel" class="form-control" placeholder="Cell Phone *"
-                                                            value="" />
+                                                            value="" id="cellPhone" name="cellPhone"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="password" class="form-control" placeholder="Your Password *"
-                                                            value="" />
+                                                            value="" id="yourPassword"/>
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="tel" class="form-control" placeholder="Cellphone Number *"
-                                                            value="" />
+                                                            value="" id="cellphoneNumber" name="cellphoneNumber"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="password" class="form-control" placeholder="Confirm Password  *"
-                                                            value="" />
+                                                            value="" id="password" name="password"/>
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="email" class="form-control" placeholder="Email *"
-                                                            value="" />
+                                                            value="" id="email" name="email" />
                                                     </div>
                                                 </div>
                                             </div>
-                                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">SAVE</button>                                        </div>
+                                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="save" name="save" type="submit">SAVE</button>                                        </div>
                                     </div>
                                 </div>
                             </div>

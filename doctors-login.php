@@ -33,10 +33,10 @@
                   <input type="checkbox" class="custom-control-input" id="customCheck1">
                   <label class="custom-control-label" for="customCheck1">Remember password</label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">REGISTER</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="signIn" name="signIn" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="register" name="register" type="submit">REGISTER</button>
                 <div class="text-center">
-                  <a class="small" href="#">Forgot password?</a></div>
+                  <a class="small" href="forgot--password.php">Forgot password?</a></div>
               </form>
             </div>
           </div>

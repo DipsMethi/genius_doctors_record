@@ -45,13 +45,11 @@
               <i class="fa fa-book"></i>
               <span>Medical Record</span>
             </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Patient File:</h6>
-                <a class="collapse-item" href="write-patient_file.html">Write</a>
-                <a class="collapse-item" href="utilities-border.html">Read</a>    
-              </div>
-            </div>
+            <li class="nav-item">
+              <a class="nav-link" href="patient_file.php">
+                <i class="fa fa-book"></i>
+                <span>Patient File</span></a>
+            </li>
           </li>
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
@@ -126,7 +124,7 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="partient_terms&condition.html">
+        <a class="nav-link" href="patient_terms&conditions.html">
           <i class="fas fa-lock"></i>
           <span>Terms & Condition</span></a>
       </li>
@@ -344,37 +342,37 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="First Name *"
-                                                            value="" />
+                                                            value="" id="firstName" name="firstName"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="tel" class="form-control" placeholder="Last Name *"
-                                                            value="" />
+                                                            value="" id="lastName" name="lastName"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="password" class="form-control" placeholder="Your Password *"
-                                                            value="" />
+                                                            value="" id="yourPassword" name="yourPassword" />
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="tel" class="form-control" placeholder="Cellphone Number *"
-                                                            value="" />
+                                                            value="" id="cellphoneNumber" name="cellphoneNumber" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="password" class="form-control" placeholder="Confirm Password  *"
-                                                            value="" />
+                                                            value="" id="confirmPassword" name="confirmPassword"/>
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="email" class="form-control" placeholder="Email *"
-                                                            value="" />
+                                                            value="" id="email" name="email"/>
                                                     </div>
                                                 </div>
                                             </div>
-                                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">SAVE</button>                                        </div>
+                                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="save" name="save" type="submit">SAVE</button>                                        </div>
                                     </div>
                                 </div>
                             </div>

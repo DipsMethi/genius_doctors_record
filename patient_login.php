@@ -29,19 +29,24 @@
 
               <form action="router.php" method="POST">
                   <div class="form-label-group">
+<<<<<<< HEAD:patient_login.php
                       <input type="text" id="id" class="form-control" placeholder="ID" name="id" required>
                       <label for="id">ID No</label>
+=======
+                      <input type="password" id="idNumber" class="form-control" placeholder="text" required>
+                      <label for="idNumber">ID No</label>
+>>>>>>> e06cd469c92340acf351a8bdf7c601c8dd2979a7:patient_login.php
                     </div>
                   <div class="form-label-group">
                     <input type="password" id="password" class="form-control" placeholder="Password" name="password" required>
                     <label for="password">Password</label>
                   </div>
                 <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <input type="checkbox" class="custom-control-input" id="termsCondition">
                     <label class="custom-control-label" for="customCheck1"><a class="small" href="partient_terms&condition.html">Terms and Condition</a></label>
                   </div>
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" name="login">LOGIN</button>
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="register" name="register">REGISTER</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" id="login" name="login">LOGIN</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="register" id="register" name="register">REGISTER</button>
                 <div class="text-center">
                   <a class="small" href="forgot--password.html">Forgot password?</a></div>
               </form>

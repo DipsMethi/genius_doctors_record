@@ -73,8 +73,8 @@
                                             <input type="checkbox" class="custom-control-input" id="customCheck1">
                                             <label class="custom-control-label" for="customCheck1"><a class="small" href="terms_and_condition.html">Terms and Condition</a></label>
                                           </div>
-                                        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">REGISTER</button>
-                                        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">login</button>
+                                        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="register" name="register" type="submit">REGISTER</button>
+                                        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="login" name="login" type="submit">LOGIN</button>
                                 </div>
                             </div>
                         </div>

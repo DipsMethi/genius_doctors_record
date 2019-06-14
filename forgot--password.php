@@ -27,7 +27,7 @@
                   <label for="inputEmail">Email address</label>
                 </div>
 
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Reset Password</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="resetPassword" type="submit">Reset Password</button>
               </form>
             </div>
           </div>
