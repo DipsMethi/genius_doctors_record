@@ -335,25 +335,25 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Heart Rate *"
-                                                            value="" />
+                                                            value=""  name="heartRate"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Blood Sugar *"
-                                                            value="" />
+                                                            value="" name="bloodSugar"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Other *"
-                                                            value="" />
+                                                            value="" name="other" />
                                                     </div>
                                                 </div>  
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="summary">Summary:</label>
-                                                        <textarea class="form-control" rows="5" id="comment" name="summary"></textarea>
+                                                        <textarea class="form-control" rows="5" name="summary"></textarea>
                                                       </div>
                                                 </div>                                         
                                             </div>
