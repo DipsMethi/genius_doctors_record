@@ -10,13 +10,6 @@
 </head>
 <body>
 
-<?php
-
-  
-  
-  
-?>
-
 <div class="container-fluid">
    <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image1"></div>
@@ -45,7 +38,6 @@
                 <div class="text-center">
                   <a class="small" href="forgot--password.html">Forgot password?</a></div>
               </form>
-
             </div>
           </div>
         </div>

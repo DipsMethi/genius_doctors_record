@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2019 at 03:37 PM
+-- Generation Time: Jun 17, 2019 at 08:54 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -51,15 +51,16 @@ CREATE TABLE `patient_medical_record` (
   `other` varchar(10000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `summary` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `prescription` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `id` int(11) NOT NULL
+  `idNum` bigint(13) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Stores patient''s medical record ';
 
 --
 -- Dumping data for table `patient_medical_record`
 --
 
-INSERT INTO `patient_medical_record` (`blood_pressure`, `blood_sugar`, `ht_rate`, `other`, `summary`, `prescription`, `id`) VALUES
-('50', '20', '60', 'Flu', 'Diagnosis complete', 'Med Lemon', 1);
+INSERT INTO `patient_medical_record` (`blood_pressure`, `blood_sugar`, `ht_rate`, `other`, `summary`, `prescription`, `idNum`) VALUES
+('50', '20', '60', 'Flu', 'Diagnosis complete', 'Med Lemon', 1234567891234),
+('20', '25', '68', 'Allergy', 'Weak', 'Allegex', 1234567891234);
 
 -- --------------------------------------------------------
 
@@ -71,7 +72,6 @@ CREATE TABLE `patient_profile` (
   `fst_name` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `lst_name` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `confirm_password` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `cel_num` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `idNum` bigint(13) UNSIGNED NOT NULL
@@ -81,34 +81,18 @@ CREATE TABLE `patient_profile` (
 -- Dumping data for table `patient_profile`
 --
 
-INSERT INTO `patient_profile` (`fst_name`, `lst_name`, `password`, `confirm_password`, `cel_num`, `email`, `idNum`) VALUES
-('Dipolelo', 'Methi', '1234', '', '0712345678', 'dips@gmail.com', 1234567891234);
+INSERT INTO `patient_profile` (`fst_name`, `lst_name`, `password`, `cel_num`, `email`, `idNum`) VALUES
+('Dipolelo', 'Methi', '1234', '0712345678', 'dips@gmail.com', 1234567891234);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `patient_medical_record`
---
-ALTER TABLE `patient_medical_record`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `patient_profile`
 --
 ALTER TABLE `patient_profile`
   ADD PRIMARY KEY (`idNum`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `patient_medical_record`
---
-ALTER TABLE `patient_medical_record`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
