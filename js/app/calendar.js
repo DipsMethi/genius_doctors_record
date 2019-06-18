@@ -2,7 +2,7 @@ define(['MindFusion.Scheduling'], function(mfScheduleing){
   var calendar = new mfScheduleing.Calendar(document.getElementById('calendar'));
   calendar.monthSettings.showPaddingDays  = false;
   calendar.currentView = mfScheduleing.CalendarView.SingleMonth;
-  calendar.theme = "blue";
+  calendar.theme = "standard";
 
   var resource;
 
