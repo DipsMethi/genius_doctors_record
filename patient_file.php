@@ -324,7 +324,7 @@
                                     <div class="container register-form">
                                         <div class="row">
                                         </div>
-                                        <div class="form">
+                                        <div class="form" action="patient_dashboard.php" method="POST">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -364,7 +364,8 @@
                                                     <textarea class="form-control" rows="5" id="prescription" name="prescription"></textarea>
                                                   </div>
                                             </div>
-                                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="save" name="save" type="submit">SAVE</button>                                        </div>
+                                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="save" name="save" type="submit">SAVE</button>                                        
+                                            </div>
                                     </div>
                                 </div>
                             </div>
