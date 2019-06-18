@@ -46,22 +46,17 @@
           <span>Patient File</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-                <i class="fa fa-sticky-note" aria-hidden="true"></i>
-            <span>Prescription</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="allergies.html">
           <i class="fa fa-window-close"></i>
           <span>Allergies</span></a>
       </li>
       <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="next_appointment.html">
               <i class="fas fa-history"></i>
               <span>Next Appointment</span></a>
      </li>
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="calender.html">
           <i class="fas fa-calendar"></i>
           <span>Calender</span></a>
       </li>
@@ -73,7 +68,7 @@
       
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link" href="diet.html">
                       <i class="fa fa-cart-plus"></i>
                       <span>Diet</span></a>
                   </li>
@@ -90,7 +85,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="advices.html">
               <i class="fa fa-thumbs-up"></i>
               <span>Advices</span></a>
           </li>
@@ -104,9 +99,9 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">GYM</a>
-            <a class="collapse-item" href="utilities-border.html">Helthy Advice</a>
-            <a class="collapse-item" href="utilities-border.html">Cooking Receipe</a>
+            <a class="collapse-item" href="gym.html">GYM</a>
+            <a class="collapse-item" href="healthy_advices.html">Helthy Advice</a>
+            <a class="collapse-item" href="cooking_recipe.html">Cooking Receipe</a>
 
           </div>
         </div>
@@ -118,7 +113,7 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="partient_terms&condition.html">
+        <a class="nav-link" href="patient_terms&conditions.html">
           <i class="fas fa-lock"></i>
           <span>Terms & Condition</span></a>
       </li>
@@ -324,7 +319,7 @@
                                     <div class="container register-form">
                                         <div class="row">
                                         </div>
-                                        <div class="form">
+                                        <div class="form" action="patient_dashboard.php" method="POST">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -364,7 +359,8 @@
                                                     <textarea class="form-control" rows="5" id="prescription" name="prescription"></textarea>
                                                   </div>
                                             </div>
-                                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="save" name="save" type="submit">SAVE</button>                                        </div>
+                                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="save" name="save" type="submit">SAVE</button>                                        
+                                            </div>
                                     </div>
                                 </div>
                             </div>

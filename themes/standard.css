@@ -1,6 +1,10 @@
 .mfp-planner.standard .mfp-selection
 {
+<<<<<<< HEAD
     background-color:#36b9cc;
+=======
+    background-color:#c71c22;
+>>>>>>> bec20a45bbde805c663a639bb8be053b4d2bffee
 }/**
 * Popup forms styles
 */
@@ -16,7 +20,11 @@
 .mfp-popup.standard .mfp-popup-header
 {
     color: #fff;
+<<<<<<< HEAD
     background-color: rgb(78, 115, 223);
+=======
+    background-color: #818284;
+>>>>>>> bec20a45bbde805c663a639bb8be053b4d2bffee
 }
 .mfp-popup.standard .mfp-popup-header a.mfp-close-button
 {
@@ -351,7 +359,11 @@
 .mfp-month-view.standard .mfp-header .mfp-title,
 .mfp-month-range-view.standard .mfp-header .mfp-title
 {
+<<<<<<< HEAD
       background-color:#4e73df;
+=======
+      background-color: #818284;
+>>>>>>> bec20a45bbde805c663a639bb8be053b4d2bffee
       padding:10px;
 }
 .mfp-month-view.standard .mfp-header .mfp-button,
