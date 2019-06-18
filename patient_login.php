@@ -22,7 +22,7 @@
 
               <form action="router.php" method="POST">
                   <div class="form-label-group">
-                      <input type="text" id="idNumber" class="form-control" name="id" required>
+                      <input type="text" id="idNumber" class="form-control" name="id"required>
                       <label for="idNumber">ID No</label>
                     </div>
                   <div class="form-label-group">
@@ -34,9 +34,9 @@
                     <label class="custom-control-label" for="customCheck1"><a class="small" href="partient_terms&condition.html">Terms and Condition</a></label>
                   </div-->
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" id="login" name="login">LOGIN</button>
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="register" id="register" name="register">REGISTER</button>
-                <div class="text-center">
-                  <a class="small" href="forgot--password.html">Forgot password?</a></div>
+                <div class="font">
+                <a class="small" href="forgot--password.html">Forgot password?</a></div>
+                  <p><i><strong>You Don't have account</strong></i><a class="small" href="patient_register.php"><strong>    :    Register</strong></a></p>                    
               </form>
             </div>
           </div>
