@@ -1,6 +1,10 @@
 
 <?php
 
+    // Start session
+    session_start();
+
+
     function alert($msg)
     {
         echo "<script type='text/javascript'> alert('$msg'); </script>";
@@ -8,6 +12,8 @@
 
     function isValid()
     {
+        $flag = false;
+
         $_idNum = $_POST['id'];
         $_password = $_POST['password'];
 
@@ -17,9 +23,11 @@
         $rows = mysqli_num_rows($result);
 
         if( $rows > 0 )
-            return true;
-        else
-            return false; 
+        {
+            $_SESSION['id'] = $_idNum;
+            $flag = true;
+        }
+        return $flag;
     }
 
     if(isValid())
