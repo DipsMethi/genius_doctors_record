@@ -312,7 +312,21 @@
             <h1 class="h3 mb-0 text-gray-800">Patient File</h1>
           </div>
           <!--- Avatar --> 
-          
+          <?php
+
+              function saveFile()
+              {
+                  
+              }
+
+              if((isset($_POST['save']) ))
+              {
+
+              }
+
+          ?>
+
+
           <!--- Form --->
           <div class="container-fluid">
                 <div class="row no-gutter">

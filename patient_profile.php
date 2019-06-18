@@ -326,6 +326,14 @@
                 <input class="file-upload" type="file" accept="image/*"/>
             </div> 
           
+          <?php
+
+              // Retrieve patient profile details
+              
+
+          ?>
+
+
           <!--- Form --->
           <div class="container-fluid">
                 <div class="row no-gutter">
