@@ -6,8 +6,28 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type='text/css' href='./themes/standard.css'/>
   <meta name="description" content="">
   <meta name="author" content="">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+  <style type="text/css">
+  body
+  {
+      background-image: url("clock.png");
+  }
+  .clock
+  {   
+      position: absolute;
+      top: 50%;
+      left: 50% ;
+      transform: translateX(-50%) translateY(-50%);
+      color: #224abe;
+      font-size: 80px;
+     /* border: 1px solid #ccc;*/
+      padding: 0px 5px 0px 5px;
+  }
+  </style>
  
   <title>Doctors Record</title>
 
@@ -406,7 +426,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Calender</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -423,7 +443,15 @@
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                    <!--<canvas id="myAreaChart"></canvas>-->
+                    <h1>Tumelo</h1>
+                    <div id="content" style="top:60px; bottom:24px;">
+                      <div style="position: absolute; width: 50px; height: 60px";>
+                        <div id="calendar" style="height: 100%; width:100%"></div>
+                      </div>
+                    </div>
+                
+                    <script data-main="JS/main.js" src="JS/require.js"></script>
                   </div>
                 </div>
               </div>
@@ -434,7 +462,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Current Time</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -448,22 +476,51 @@
                     </div>
                   </div>
                 </div>
-                <!-- Card Body -->
+                <!-- Card Body editiing -->
                 <div class="card-body">
                   <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
-                    </span>
-                  </div>
+                    <div id="MyClockDisplay" class="clock"></div>
+    <script type="text/javascript">
+    
+     function showTime()
+     {
+         var date = new Date();
+         var h = date.getHours();
+         var m = date.getMinutes();
+         var s = date.getSeconds();
+        /*
+        var session = "AM";
+        
+        if(h == 0)
+        {
+            h =12;
+        }
+        if(h>12)
+        {
+            h = h - 12;
+            session = "PM";
+        }
+        */
+        h = (h < 10) ? "0" + h : h;
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
+        /**/
+         var time = h + ":" + m + ":" + s;// + " " + session;
+         document.getElementById("MyClockDisplay").innerText = time;
+         document.getElementById("MyClockDisplay").textContent = time;
+
+         setTimeout(showTime, 1000);
+
+     }
+
+     showTime();
+
+    
+    </script>
+                  </div> 
+
+                  
+
                 </div>
               </div>
             </div>
