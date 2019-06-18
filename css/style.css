@@ -148,3 +148,11 @@
     background: #0062cc;
     color: #fff;
 }
+.messages{
+ padding-block-start: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+  border: 2px solid lightgrey;
+  border-radius: 9px;
+  
+}

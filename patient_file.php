@@ -309,18 +309,26 @@
           <!--- Avatar --> 
           <?php
 
-              function saveFile()
-              {
-                  
-              }
-
               if((isset($_POST['save']) ))
               {
+                  $idNum = $_SESSION['idNum'];
+                  $bloodPressure = $_POST['bloodPressure'];
+                  $bloodSugar = $_POST['bloodSugar'];
+                  $heartRate = $_POST['heartRate'];
+                  $other = $_POST['other'];
+                  $summary = $_POST['summary'];
+                  $prescription = $_POST['prescription'];
+                  
+                  $connStr = mysqli_connect("localhost","root","","doctors_db");
+                  if($connStr)
+                  {
+                      $query = "INSERT INTO patient_medical_record (idNum,blood_pressure,blood_sugar,ht_rate,other,summary,prescription) VALUES ('$idNum','$bloodPressure','$bloodSugar','$heartRate','$other','$summary','$prescription')";
+                      $result = mysqli_query($connStr, $query);
 
+                      header("location: patient_dashboard.html");
+                  }
               }
-
           ?>
-
 
           <!--- Form --->
           <div class="container-fluid">
@@ -332,13 +340,12 @@
                                 <div class="row">
                                     <div class="container register-form">
                                         <div class="row">
-                                        </div>
-                                        <div class="form" action="patient_dashboard.php" method="POST">
+                                        <form action="#" method="POST">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Blood Pressure *"
-                                                            value="" id="bloodPressure" name="bloadPressure"/>
+                                                            value="" id="bloodPressure" name="bloodPressure"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -375,6 +382,7 @@
                                             </div>
                                                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="save" name="save" type="submit">SAVE</button>                                        
                                             </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
