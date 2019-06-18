@@ -586,6 +586,10 @@ pre code {
     .container {
         max-width: 540px
     }
+    #content{
+        width:100%;
+        height:40%;
+    }
 }
 
 @media (min-width:768px) {
