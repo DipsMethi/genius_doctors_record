@@ -29,10 +29,10 @@
                     <input type="password" id="password" class="form-control" name="pswd" required>
                     <label for="password">Password</label>
                   </div>
-                <div class="custom-control custom-checkbox mb-3">
+                <!--div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input" id="termsCondition">
-                    <label class="custom-control-label" for="customCheck1"><a class="small" href="patient_terms&conditions.html">Terms and Condition</a></label>
-                  </div>
+                    <label class="custom-control-label" for="customCheck1"><a class="small" href="partient_terms&condition.html">Terms and Condition</a></label>
+                  </div-->
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" id="login" name="login">LOGIN</button>
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="register" id="register" name="register">REGISTER</button>
                 <div class="text-center">
