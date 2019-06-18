@@ -22,11 +22,11 @@
 
               <form action="router.php" method="POST">
                   <div class="form-label-group">
-                      <input type="password" id="idNumber" class="form-control" placeholder="text" required>
+                      <input type="text" id="idNumber" class="form-control" name="id" required>
                       <label for="idNumber">ID No</label>
                     </div>
                   <div class="form-label-group">
-                    <input type="password" id="password" class="form-control" placeholder="Password" name="password" required>
+                    <input type="password" id="password" class="form-control" name="pswd" required>
                     <label for="password">Password</label>
                   </div>
                 <!--div class="custom-control custom-checkbox mb-3">
