@@ -35,8 +35,8 @@
                   </div-->
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" id="login" name="login">LOGIN</button>
                 <div class="font">
-                <a class="small" href="forgot--password.html">Forgot password?</a></div>
-                  <p><i><strong>You Don't have account</strong></i><a class="small" href="patient_register.php"><strong>    :    Register</strong></a></p>                    
+                <a class="small" href="forgot_password.html"><strong><center>Forgot password?</center></strong></a></div>
+                <center><p>Don't have an account? <a class="small" href="patient_register.php"><strong>Register</strong></a></p></center>                    
               </form>
             </div>
           </div>
