@@ -156,3 +156,6 @@
   border-radius: 9px;
   
 }
+.checked {
+  color: orange;
+}
