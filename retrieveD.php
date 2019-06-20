@@ -1,44 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
+
+$db_host = 'localhost'; // Server Name
+$db_user = 'root'; // Username
+$db_pass = ''; // Password
+$db_name = 'tutorial'; // Database Name
+
+$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+if (!$conn) {
+	die ('Failed to connect to MySQL: ' . mysqli_connect_error());	
+}
+
+$sql = 'SELECT * 
+		FROM sales';
+		
+$query = mysqli_query($conn, $sql);
+
+if (!$query) {
+	die ('SQL Error: ' . mysqli_error($conn));
+}
+?>
+<html>
 <head>
+	
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" type='text/css' href='./themes/standard.css'/>
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-  <script src="main.js"></script>
-  <style type="text/css">
-
-  .clock
-  {   
-    width: 100%;
-      position: absolute;
-      top: 50%;
-      left: 50% ;
-      transform: translateX(-50%) translateY(-50%);
-      color: #224abe;
-      font-size: 64px;
-      border: 1px solid #ccc;
-      padding: 0px 5px 0px 5px;
-      /* background-image: url("clock.png"); */
-  }
-  </style>
- 
-  <title>Doctors Record</title>
-
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<title>Displaying MySQL Data in HTML Table</title>
+	<!-- Custom fonts for this template-->
+	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type='text/css' href='./themes/standard.css'/>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+	<style type="text/css">
+	
+	
+	<style type="text/css">
+		body {
+			font-size: 15px;
+			color: #343d44;
+			font-family: "segoe-ui", "open-sans", tahoma, arial;
+			padding: 0;
+			margin: 0;
+		}
+		table {
+			margin: auto;
+			font-family: "Lucida Sans Unicode", "Lucida Grande", "Segoe Ui";
+			font-size: 12px;
+		}
 
+		h1 {
+			margin: 25px auto 0;
+			text-align: center;
+			text-transform: uppercase;
+			font-size: 17px;
+		}
+
+		table td {
+			transition: all .5s;
+		}
+		
+		/* Table */
+		.data-table {
+			border-collapse: collapse;
+			font-size: 14px;
+			min-width: 537px;
+		}
+
+		.data-table th, 
+		.data-table td {
+			border: 1px solid #e1edff;
+			padding: 7px 17px;
+		}
+		.data-table caption {
+			margin: 7px;
+		}
+
+		/* Table Header */
+		.data-table thead th {
+			background-color: #508abb;
+			color: #FFFFFF;
+			border-color: #6ea1cc !important;
+			text-transform: uppercase;
+		}
+
+		/* Table Body */
+		.data-table tbody td {
+			color: #353535;
+		}
+		.data-table tbody td:first-child,
+		.data-table tbody td:nth-child(4),
+		.data-table tbody td:last-child {
+			text-align: right;
+		}
+
+		.data-table tbody tr:nth-child(odd) td {
+			background-color: #f4fbff;
+		}
+		.data-table tbody tr:hover td {
+			background-color: #ffffa2;
+			border-color: #ffff0f;
+		}
+
+		/* Table Footer */
+		.data-table tfoot th {
+			background-color: #e5f5ff;
+			text-align: right;
+		}
+		.data-table tfoot th:first-child {
+			text-align: left;
+		}
+		.data-table tbody td:empty
+		{
+			background-color: #ffcccc;
+		}
+	</style>
 </head>
-
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -327,125 +411,7 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-       <div class="container">
-            <div class="col-xl-3 col-md-9  col-s-12 ">
-           <h2>Appointment</h2><br>
-
-           <table class="table table border">
-                <thead>
-                  <tr>
-                    <th scope="col">Number</th>
-                    <th scope="col">Subject</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                        <th scope="row">4</th>
-                        
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                            <th scope="row">5</th>
-                            
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                                <th scope="row">6</th>
-                                
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                              </tr>
-                              <tr>
-                                    <th scope="row">7</th>
-                                    
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                  </tr>
-
-                                  <tr>
-                                        <th scope="row">8</th>
-                                        
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                      </tr>
-                                      <tr>
-                                            <th scope="row">9</th>
-                                            
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                          </tr>
-                                          <tr>
-                                                <th scope="row">10</th>
-                                                
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                              </tr>
-                                              <tr>
-                                                    <th scope="row"></th>
-                                                    
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                  </tr>
-                </tbody>
-              </table>
-
-          </div>
-       </div>
+       
       
 
 
@@ -454,9 +420,41 @@
 
          
 
-              
 
-              <!-- Approach -->
+
+	<h1>Appointment</h1>
+	<table class="data-table">
+		<caption class="title">Appointment</caption>
+		<thead>
+			<tr>
+				<th>NO</th>
+				<th>SUBJECT</th>
+				<th>DESCRIPTION</th>
+				<th>LOCATION</th>
+				<th>TIME</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php
+		$no 	= 1;
+		$total 	= 0;
+		while ($row = mysqli_fetch_array($query))
+		{
+			$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
+			echo '<tr>
+					<td>'.$no.'</td>
+					<td>'.$row['name'].'</td>
+					<td>'.$row['item'].'</td>
+					<td>'. date('F d, Y', strtotime($row['date'])) . '</td>
+					<td>'.$amount.'</td>
+				</tr>';
+			$total += $row['amount'];
+			$no++;
+		}?>
+		</tbody>
+		
+	</table>
+  <!-- Approach -->
              
 
             </div>
