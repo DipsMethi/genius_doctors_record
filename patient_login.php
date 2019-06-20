@@ -33,10 +33,10 @@
                     <input type="checkbox" class="custom-control-input" id="termsCondition">
                     <label class="custom-control-label" for="customCheck1"><a class="small" href="partient_terms&condition.html">Terms and Condition</a></label>
                   </div-->
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" id="login" name="login">LOGIN</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" id="login" name="login">Log In</button>
                 <div class="font">
-                <a class="small" href="forgot_password.html"><strong><center>Forgot password?</center></strong></a></div>
-                <center><p>Don't have an account? <a class="small" href="patient_register.php"><strong>Register</strong></a></p></center>                    
+                <a class="small" href="forgot_password.php"><strong><center>Forgot password?</center></strong></a></div>
+                <center><p>Don't have an account? <a class="small" href="patient_register.php"><strong>Sign up</strong></a></p></center>                    
               </form>
             </div>
           </div>
