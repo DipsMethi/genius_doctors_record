@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2019 at 10:21 AM
+-- Generation Time: Jun 20, 2019 at 11:21 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -21,22 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `doctors_db`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cal_data`
---
-
-CREATE TABLE `cal_data` (
-  `StartTime` datetime NOT NULL,
-  `EndTime` datetime NOT NULL,
-  `Contacts` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Location` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Resources` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Details` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Subject` text COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Stores calendar information ';
 
 -- --------------------------------------------------------
 
@@ -130,7 +114,12 @@ INSERT INTO `users` (`pFstName`, `pLstName`, `pEmail`, `pCellNum`, `pAddr1`, `pC
 ('Dipolelo', 'Methi', 'dipolelodips@gmail.com', '0795114017', 'Lucas Mangope', 'Mabopane', '59 Lebanon', '111', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Baverly Hills', 'Premium', 'Hosmed', '543678', '0795114017'),
 ('Dipolelo', 'Methi', 'dipolelodips@gmail.com', '0795114017', 'Lucas Mangope', 'Mabopane', '59 Lebanon', '10111', 'Josh', 'Altman', '9401055364088', '0761734875', 'California', 'Baverly Hills', 'Standard', 'Auto & General', '3456234', '0795114017'),
 ('Dipolelo', 'Methi', 'dipolelodips@gmail.com', '0795114017', 'Lucas Mangope', 'Mabopane', '59 Lebanon', '455', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Baverly Hills', 'Starter', 'OUTSurance', '32536', '0795114017'),
-('Dipolelo', 'Methi', 'dipolelodips@gmail.com', '0795114017', 'Lucas Mangope, 59 Lebanon', 'Mabopane', '59 Lebanon', '', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Baverly Hills', 'Premium', 'Hosmed', '543678', '0795114017');
+('Dipolelo', 'Methi', 'dipolelodips@gmail.com', '0795114017', 'Lucas Mangope, 59 Lebanon', 'Mabopane', '59 Lebanon', '', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Baverly Hills', 'Premium', 'Hosmed', '543678', '0795114017'),
+('Dipolelo', 'Methi', 'dipolelodips@gmail.com', '0795114017', 'Lucas Mangope, 59 Lebanon', 'Mabopane', '59 Lebanon', '123', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Baverly Hills', 'Premium', 'Hosmed', '3456234', '0795114017'),
+('David', 'Hannerman', 'david@gmail.com', '0715114017', 'Willshire', 'Bev Hills', '', '111', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Baverly Hills', 'Premium', 'OUTSurance', '32536', '0795114017'),
+('Russell', 'Hannerman', 'russell@gmail.com', '0764875678', 'California', 'Bel Air', 'New York', '0795114017', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Beverly Hills', 'Premium', 'OUTSurance', '32536', '0795114017'),
+('Russell', 'Hannerman', 'russell@gmail.com', '0764875678', 'California', 'Bel Air', 'New York', '0795114017', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Beverly Hills', 'Premium', 'OUTSurance', '32536', '0795114017'),
+('Peter', 'Thiel', 'peter@gmail.com', '0795114017', 'Los Angela', 'Mabopane', '59 Lebanon', '0795114017', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Beverly Hills', 'Starter', 'Auto & General', '32536', '0795114017');
 
 --
 -- Indexes for dumped tables
