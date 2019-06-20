@@ -1,49 +1,18 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
 
-
-$db_host = 'localhost'; // Server Name
-$db_user = 'root'; // Username
-$db_pass = ''; // Password
-$db_name = 'tutorial'; // Database Name
-
-$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-if (!$conn) {
-	die ('Failed to connect to MySQL: ' . mysqli_connect_error());	
-}
-
-$sql = 'SELECT * 
-		FROM sales';
-		
-$query = mysqli_query($conn, $sql);
-
-if (!$query) {
-	die ('SQL Error: ' . mysqli_error($conn));
-}
-?>
-<html>
 <head>
-	
 
-	<title>Displaying MySQL Data in HTML Table</title>
-	<!-- Custom fonts for this template-->
-	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type='text/css' href='./themes/standard.css'/>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-	<style type="text/css">
-	
-	
-	<style type="text/css">
-		body {
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type='text/css' href='./themes/standard.css'/>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+  <style type="text/css">
+  body {
 			font-size: 15px;
 			color: #343d44;
 			font-family: "segoe-ui", "open-sans", tahoma, arial;
@@ -123,7 +92,40 @@ if (!$query) {
 		{
 			background-color: #ffcccc;
 		}
-	</style>
+  </style>
+ 
+  <title>Doctors Record</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+  <?php
+
+
+$db_host = 'localhost'; // Server Name
+$db_user = 'root'; // Username
+$db_pass = ''; // Password
+$db_name = 'tutorial'; // Database Name
+
+$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+if (!$conn) {
+	die ('Failed to connect to MySQL: ' . mysqli_connect_error());	
+}
+
+$sql = 'SELECT * 
+		FROM users';
+		
+$query = mysqli_query($conn, $sql);
+
+if (!$query) {
+	die ('SQL Error: ' . mysqli_error($conn));
+}
+?>
+
 </head>
 <body id="page-top">
 
@@ -138,7 +140,7 @@ if (!$query) {
         <div class="sidebar-brand-icon">
           <i class="fa fa-heartbeat"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Doctors Record</div>
+        <div class="sidebar-brand-text mx-3">Patient Record</div>
       </a>
 
       <!-- Divider -->
@@ -151,17 +153,17 @@ if (!$query) {
           <span>Patient File</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="allergies.html">
           <i class="fa fa-window-close"></i>
           <span>Allergies</span></a>
       </li>
       <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="next_appointment.html">
               <i class="fas fa-history"></i>
               <span>Next Appointment</span></a>
      </li>
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="calender.html">
           <i class="fas fa-calendar"></i>
           <span>Calender</span></a>
       </li>
@@ -173,7 +175,7 @@ if (!$query) {
       
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link" href="diet.html">
                       <i class="fa fa-cart-plus"></i>
                       <span>Diet</span></a>
                   </li>
@@ -190,7 +192,7 @@ if (!$query) {
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="advices.html">
               <i class="fa fa-thumbs-up"></i>
               <span>Advices</span></a>
           </li>
@@ -204,9 +206,9 @@ if (!$query) {
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">GYM</a>
-            <a class="collapse-item" href="utilities-border.html">Helthy Advice</a>
-            <a class="collapse-item" href="utilities-border.html">Cooking Receipe</a>
+            <a class="collapse-item" href="gym.html">GYM</a>
+            <a class="collapse-item" href="healthy_advices.html">Helthy Advice</a>
+            <a class="collapse-item" href="cooking_recipe.html">Cooking Receipe</a>
 
           </div>
         </div>
@@ -218,7 +220,7 @@ if (!$query) {
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="partient_terms&condition.html">
+        <a class="nav-link" href="patient_terms&conditions.html">
           <i class="fas fa-lock"></i>
           <span>Terms & Condition</span></a>
       </li>
@@ -387,7 +389,7 @@ if (!$query) {
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="patience_profile.html">
+                <a class="dropdown-item" href="patient_profile.php">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -413,67 +415,92 @@ if (!$query) {
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-       
-      
+        <div class="container-fluid">
 
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Doctors List</h1>
+          <p class="mb-4">You can browse through the list of the Doctors or search your Dr by name or City Address and their specilization</a>.</p>
 
-         
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">All Doctors in The List are Qualified Doctors</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                <div class="col-xl-3 col-md-6 col-sm-4">
+            <div class="dropdown">
+               <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Show
+                   <span class="caret"></span></button>
+                     <ul class="dropdown-menu">
+                       <li><a href="#">10</a></li>
+                       <li><a href="#">25</a></li>
+                       <li><a href="#">75</a></li>
+                       <li><a href="#">100</a></li>
 
+                    </ul>
+            </div>
+           </div>
+                   <div class="col-xl-5 col-md-9 col-sm-8">
+                       <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                   </div>
+            </div>
+              <div class="table-responsive">
 
-         
-
-
-   
-	<h1>Appointment</h1>
+                <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                
+                  
 	<table class="data-table">
-		<caption class="title">Appointment</caption>
+		
 		<thead>
 			<tr>
-				<th>NO</th>
-				<th>SUBJECT</th>
-				<th>DESCRIPTION</th>
-				<th>LOCATION</th>
-				<th>START TIME</th>
-				<th>END TIME</th>
+                <th>Number</th>
+                <th>Name</th>
+				<th>Speciality</th>
+				<th>City</th>
+				<th>Age</th>
+				<th>Start date</th>
+				<th>Salary</th>
 			</tr>
 		</thead>
 		<tbody>
 		<?php
-		$no 	= 1;
-		$total 	= 0;
+        $no 	= 1;
+        //$no = $_POST['numbers'];
+		
 		while ($row = mysqli_fetch_array($query))
 		{
-			$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
+			
 			echo '<tr>
 					<td>'.$no.'</td>
-					<td>'.$row['name'].'</td>
-					<td>'.$row['item'].'</td>
-					<td>'. date('F d, Y', strtotime($row['date'])) . '</td>
-					<td>'.$amount.'</td>
-					<td>'. date('F d, Y', strtotime($row['end'])) . '</td>
-					
-					
+					<td>'.$row['pFstName'].'</td>
+                    <td>'.$row['pLstName'].'</td>
+                    <td>'.$row['pLstName'].'</td>
+                    <td>'.$row['pLstName'].'</td>
+                    <td>'.$row['pLstName'].'</td>
+                    <td>'.$row['pLstName'].'</td>
+				
 					
 				</tr>';
-			$total += $row['amount'];
+			
 			$no++;
 		}?>
 		</tbody>
 		
 	</table>
-  <!-- Approach -->
-             
 
+                </table>
+              </div>
             </div>
           </div>
 
         </div>
         <!-- /.container-fluid -->
 
-    
+      </div>
       <!-- End of Main Content -->
 
-      <!-- The Footer -->
+      <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
@@ -507,7 +534,7 @@ if (!$query) {
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="patient_login.php">Logout</a>
+          <a class="btn btn-primary" href="login.html">Logout</a>
         </div>
       </div>
     </div>
@@ -524,12 +551,11 @@ if (!$query) {
   <script src="js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
-  <script data-main="JS/main.js" src="JS/require.js"></script>
+  <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 
