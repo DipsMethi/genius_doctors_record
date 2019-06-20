@@ -19,7 +19,7 @@
         $_password = $_POST['pswd'];
 
         $connectionString = mysqli_connect("localhost", "root", "", "doctors_db");
-        $result = mysqli_query($connectionString, "SELECT * FROM patient_profile WHERE idNum='$_idNum' && password='$_password'");
+        $result = mysqli_query($connectionString, "SELECT * FROM patient_profile WHERE idNum='$_idNum' && pswd='$_password'");
 
         $rows = mysqli_num_rows($result);
         if( $rows > 0 )
