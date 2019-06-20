@@ -298,7 +298,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="patience_profile.html">
+                <a class="dropdown-item" href="patient_profile.php">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -322,32 +322,89 @@
           
           <!--Avatar --> 
           
+        <?php
+            // Checks if REGISTER button is clicked
+            if(isset($_POST['register']))
+            {
+                try
+                {
+                    // Connect to database
+                    $connStr = mysqli_connect("localhost", "root", "", "doctors_db");
+                    if($connStr)
+                    {
+                      // Retrieve patient form data
+                      $pFirstName = $_POST['pFirstName'];
+                      $pLastName = $_POST['pLastName'];
+                      $pEmail = $_POST['pEmail'];
+                      $pCell = $_POST['pCell'];
+                      $pSOS = $_POST['pSOS'];
+                      $pAddr1 = $_POST['pAddr1'];
+                      $pAddr2 = $_POST['pAddr2'];
+                      $pCity = $_POST['pCity'];
+                      // Get guarantor data
+                      $gFirstName = $_POST['gFirstName'];
+                      $gLastName = $_POST['gLastName'];
+                      $gID = $_POST['gID'];
+                      $gCell = $_POST['gCell'];
+                      $gAddr = $_POST['gAddr'];
+                      $gCity = $_POST['gCity'];
+                      // Get insurance data
+                      $iTypePlan = $_POST['iTypePlan'];
+                      $insurer = $_POST['insurer'];
+                      $policyID = $_POST['policyID'];
+                      $iCell = $_POST['iCell'];
+
+                      // Query string
+                      $query = "INSERT INTO users (pFstName,pLstName,pEmail
+                                                  ,pCellNum,pAddr1,pCity,pAddr2
+                                                  ,pSOSNum,gFstName,gLstName,gID
+                                                  ,gCellNum,gAddr,gCity,iPlanType
+                                                  ,iInsurer,iPlcyID,iContacts) 
+                                            VALUES('$pFirstName','$pLastName','$pEmail'
+                                                  ,'$pCell','$pAddr1','$pCity','$pAddr2'
+                                                  ,'$pSOS','$gFirstName','$gLastName'
+                                                  ,'$gID','$gCell','$gAddr','$gCity'
+                                                  ,'$iTypePlan','$insurer','$policyID','$iCell')";             
+                      if(mysqli_query($connStr, $query) == TRUE)
+                      {
+                          // Display modal and redirect to patient login
+                      }
+                    } 
+                }
+                catch(Exception $ex)
+                {
+                    alert("Exception: " . $ex.getMessage());
+                }
+                finally
+                {
+                    
+                }
+            }
+        ?>
+
+
           <!--- Form -->
        <div class="container">
-
         <div class="row">
-
             <div class="col-xl-8 offset-xl-2">
 
-                <h1>PATIENT REGISTRATION FORM </h1>
-                <p><i><strong>Patient Information</strong></i></p>
+                <center><h2>PATIENT REGISTRATION FORM </h2></center>
+                <center><p><strong>Patient Information</strong></p></center>
                                  
-                <form id="contact-form" method="post" action="contact.php" role="form">
-
+                <form id="contact-form" method="POST" action="#" role="form">
                     <div class="messages">
-
                     <div class="controls">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_name" type="text" name="firstName" class="form-control" placeholder="First name" required="required"
+                                    <input id="form_name" type="text" name="pFirstName" class="form-control" placeholder="First name" required="required"
                                         data-error="Firstname is required.">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_lastname" type="text" name="lastName" class="form-control" placeholder="Last Name" required="required"
+                                    <input id="form_lastname" type="text" name="pLastName" class="form-control" placeholder="Last Name" required="required"
                                         data-error="Lastname is required.">
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -356,14 +413,14 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Email" required="required"
+                                    <input id="form_email" type="email" name="pEmail" class="form-control" placeholder="Email" required="required"
                                         data-error="Valid email is required.">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="CellPhone Number">
+                                    <input id="form_phone" type="tel" name="pCell" class="form-control" placeholder="CellPhone Number">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -371,14 +428,14 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_address" type="address" name="address" class="form-control" placeholder="Address" required="required"
+                                    <input id="form_address" type="address" name="pAddr1" class="form-control" placeholder="Address 1" required="required"
                                         data-error="Valid address is required.">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_phone" type="text" name="city" class="form-control" placeholder="City">
+                                    <input id="form_phone" type="text" name="pCity" class="form-control" placeholder="City">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -386,39 +443,33 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_address" type="address" name="address2" class="form-control" placeholder="Address 2" required="required"
-                                        data-error="Valid address is required.">
+                                    <input id="form_address" type="address" name="pAddr2" class="form-control" placeholder="Address 2 (Optional)">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_phone" type="tel" name="EmergencyPhone" class="form-control" placeholder="Emergency phone">
+                                    <input id="form_phone" type="tel" name="pSOS" class="form-control" placeholder="Emergency phone">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
 </div>
-<br>
-
-     
        <!--Responsible for the bill-->
-        
-  
-       <br><p><i><strong>Guaranto Information</strong></i></p>                    
+       <center><p><strong>Guarantor Information</strong></p></center>                    
         <div class="messages">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input id="form_name" type="text" name="firstName" class="form-control" placeholder="First Name" required="required"
+                            <input id="form_name" type="text" name="gFirstName" class="form-control" placeholder="First Name" required="required"
                                 data-error="Firstname is required.">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input id="form_lastname" type="text" name="lastName" class="form-control" placeholder="Last Name" required="required"
+                            <input id="form_lastname" type="text" name="gLastName" class="form-control" placeholder="Last Name" required="required"
                                 data-error="Lastname is required.">
                             <div class="help-block with-errors"></div>
                         </div>
@@ -427,14 +478,14 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input id="form_email" type="email" name="email" class="form-control" placeholder="ID Number" required="required"
+                            <input id="form_id" type="text" name="gID" class="form-control" placeholder="ID Number" required="required"
                                 data-error="Valid email is required.">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Cellphone Number">
+                            <input id="form_phone" type="tel" name="gCell" class="form-control" placeholder="Cellphone Number">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -442,27 +493,27 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input id="form_address" type="address" name="address" class="form-control" placeholder="Address" required="required"
+                            <input id="form_address" type="address" name="gAddr" class="form-control" placeholder="Address" required="required"
                                 data-error="Valid address is required.">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="City">
+                            <input id="form_phone" type="tel" name="gCity" class="form-control" placeholder="City">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
  </div>
 </div>          
          <!--Medical aid details-->
-  <br><p><i><strong>Insurance Infomation</strong></i></p>                    
+  <center><p><strong>Insurance Infomation</strong></p></center>                    
             <div class="messages">
 
                    <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input id="form_name" type="text" name="typePlan" class="form-control" placeholder="Type of Plan" required="required"
+                            <input id="form_name" type="text" name="iTypePlan" class="form-control" placeholder="Type of Plan" required="required"
                                 data-error="type of plan is required.">
                             <div class="help-block with-errors"></div>
                         </div>
@@ -478,29 +529,28 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input id="form_policyId" type="number" name="email" class="form-control" placeholder="Policy ID" required="required"
+                            <input id="form_policyId" type="text" name="policyID" class="form-control" placeholder="Policy ID" required="required"
                                 data-error="Policy ID is required.">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Contact Number">
+                            <input id="form_phone" type="tel" name="iCell" class="form-control" placeholder="Contact Number">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-
   <!--Terms and conditions -->
   
-                <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="termsCondition">
-                    <label class="custom-control-label" for="customCheck1"><a class="small" href="partient_terms&condition.html">Terms and Condition</a></label>
-                </div>
-    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" id="login" name="login">LOGIN</button>
-
+  <div class="custom-control custom-checkbox mb-3">
+      <input type="checkbox" class="custom-control-input" id="customCheck1">
+      <label class="custom-control-label" for="customCheck1"><a class="small" href="terms_and_condition.html">Terms and Conditions</a></label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" id="register" name="register">REGISTER</button>
+</form>
 
     <!-- End of Main Content -->
 
