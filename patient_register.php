@@ -323,7 +323,13 @@
           <!--Avatar --> 
           
         <?php
-            // Checks if REGISTER button is clicked
+            // Displays alert message
+            function alert($msg)
+            {
+                echo "<script> alert($msg) </script>";
+            }
+
+            // Check if REGISTER button is clicked
             if(isset($_POST['register']))
             {
                 try
@@ -332,52 +338,60 @@
                     $connStr = mysqli_connect("localhost", "root", "", "doctors_db");
                     if($connStr)
                     {
-                      // Retrieve patient form data
-                      $pFirstName = $_POST['pFirstName'];
-                      $pLastName = $_POST['pLastName'];
-                      $pEmail = $_POST['pEmail'];
-                      $pCell = $_POST['pCell'];
-                      $pSOS = $_POST['pSOS'];
-                      $pAddr1 = $_POST['pAddr1'];
-                      $pAddr2 = $_POST['pAddr2'];
-                      $pCity = $_POST['pCity'];
-                      // Get guarantor data
-                      $gFirstName = $_POST['gFirstName'];
-                      $gLastName = $_POST['gLastName'];
-                      $gID = $_POST['gID'];
-                      $gCell = $_POST['gCell'];
-                      $gAddr = $_POST['gAddr'];
-                      $gCity = $_POST['gCity'];
-                      // Get insurance data
-                      $iTypePlan = $_POST['iTypePlan'];
-                      $insurer = $_POST['insurer'];
-                      $policyID = $_POST['policyID'];
-                      $iCell = $_POST['iCell'];
+                        // Retrieve patient form data
+                        $pFirstName = $_POST['pFirstName'];
+                        $pLastName = $_POST['pLastName'];
+                        $pEmail = $_POST['pEmail'];
+                        $pCell = $_POST['pCell'];
+                        $pSOS = $_POST['pSOS'];
+                        $pAddr1 = $_POST['pAddr1'];
+                        $pAddr2 = $_POST['pAddr2'];
+                        $pCity = $_POST['pCity'];
+                        // Get guarantor data
+                        $gFirstName = $_POST['gFirstName'];
+                        $gLastName = $_POST['gLastName'];
+                        $gID = $_POST['gID'];
+                        $gCell = $_POST['gCell'];
+                        $gAddr = $_POST['gAddr'];
+                        $gCity = $_POST['gCity'];
+                        // Get insurance data
+                        $iTypePlan = $_POST['iTypePlan'];
+                        $insurer = $_POST['insurer'];
+                        $policyID = $_POST['policyID'];
+                        $iCell = $_POST['iCell'];
 
-                      // Query string
-                      $query = "INSERT INTO users (pFstName,pLstName,pEmail
-                                                  ,pCellNum,pAddr1,pCity,pAddr2
-                                                  ,pSOSNum,gFstName,gLstName,gID
-                                                  ,gCellNum,gAddr,gCity,iPlanType
-                                                  ,iInsurer,iPlcyID,iContacts) 
-                                            VALUES('$pFirstName','$pLastName','$pEmail'
-                                                  ,'$pCell','$pAddr1','$pCity','$pAddr2'
-                                                  ,'$pSOS','$gFirstName','$gLastName'
-                                                  ,'$gID','$gCell','$gAddr','$gCity'
-                                                  ,'$iTypePlan','$insurer','$policyID','$iCell')";             
-                      if(mysqli_query($connStr, $query) == TRUE)
-                      {
-                          // Display modal and redirect to patient login
-                      }
+                        // Query string
+                        $query = "INSERT INTO users (pFstName,pLstName,pEmail
+                                                    ,pCellNum,pAddr1,pCity,pAddr2
+                                                    ,pSOSNum,gFstName,gLstName,gID
+                                                    ,gCellNum,gAddr,gCity,iPlanType
+                                                    ,iInsurer,iPlcyID,iContacts) 
+                                              VALUES('$pFirstName','$pLastName','$pEmail'
+                                                    ,'$pCell','$pAddr1','$pCity','$pAddr2'
+                                                    ,'$pSOS','$gFirstName','$gLastName'
+                                                    ,'$gID','$gCell','$gAddr','$gCity'
+                                                    ,'$iTypePlan','$insurer','$policyID','$iCell')";             
+                        if(mysqli_query($connStr, $query) == TRUE)
+                        {
+                            // Display modal and redirect to patient login
+                            echo "<script>
+                                  // Show alert after successful registration
+                                  alert(\"Thank you for registering\");
+                                
+                                  // Redirecting to patient_login.php
+                                  window.location.href = 'patient_login.php';
+                                  </script>";
+                        }
                     } 
                 }
                 catch(Exception $ex)
                 {
-                    alert("Exception: " . $ex.getMessage());
+                    alert('Exception: ' . $ex->getMessage());
                 }
                 finally
                 {
                     // Close database
+                    mysqli_close($connStr);
                 }
             }
         ?>
@@ -542,12 +556,24 @@
             </div>
 
   <!--Terms and conditions -->
-  
+  <script>
+      // Toggles Register button's enabled attribute
+      // Enables register button if Ts&Cs checked, disables otherwise
+      function toggleRegister(tc)
+      {
+          if(tc.checked)
+              $("#register").removeAttr("disabled");
+          else
+              $("#register").attr("disabled", "disabled");
+      }
+  </script>
+
+
   <div class="custom-control custom-checkbox mb-3">
-      <input type="checkbox" class="custom-control-input" id="customCheck1">
-      <label class="custom-control-label" for="customCheck1"><a class="small" href="terms_and_condition.html">Terms and Conditions</a></label>
+      <input type="checkbox" class="custom-control-input" id="tc" onclick="toggleRegister(this)">
+      <label class="custom-control-label" for="tc"><a class="small" href="terms_and_condition.html">Terms and Conditions</a></label>
   </div>
-  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" id="register" name="register">REGISTER</button>
+  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" id="register" name="register" disabled>REGISTER</button>
 </form>
 
     <!-- End of Main Content -->
