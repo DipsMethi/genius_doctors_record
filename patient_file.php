@@ -282,12 +282,12 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="patience_profile.html">
+                <a class="dropdown-item" href="patient_profile.php">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="partience-login.html" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="patient_login.html" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -311,7 +311,9 @@
 
               if((isset($_POST['save']) ))
               {
-                  $idNum = $_SESSION['idNum'];
+                try
+                {
+                    //$idNum = $_SESSION['idNum'];
                   $bloodPressure = $_POST['bloodPressure'];
                   $bloodSugar = $_POST['bloodSugar'];
                   $heartRate = $_POST['heartRate'];
@@ -320,13 +322,22 @@
                   $prescription = $_POST['prescription'];
                   
                   $connStr = mysqli_connect("localhost","root","","doctors_db");
-                  if($connStr)
+                  if( $connStr )
                   {
-                      $query = "INSERT INTO patient_medical_record (idNum,blood_pressure,blood_sugar,ht_rate,other,summary,prescription) VALUES ('$idNum','$bloodPressure','$bloodSugar','$heartRate','$other','$summary','$prescription')";
+                      $query = "INSERT INTO patient_medical_record (idNum,blood_pressure,blood_sugar,ht_rate,other,summary,prescription) VALUES (NULL,'$bloodPressure','$bloodSugar','$heartRate','$other','$summary','$prescription')";
                       $result = mysqli_query($connStr, $query);
-
-                      header("location: patient_dashboard.html");
+                      
+                      //header("location: patient_dashboard.html");
                   }
+                }
+                catch(Exception $ex)
+                {
+                    alert( "Exception ex: " . $ex->getMessage() );
+                }
+                finally
+                {
+                    // Close database
+                }    
               }
           ?>
 
@@ -432,7 +443,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="partience-login.html">Logout</a>
+          <a class="btn btn-primary" href="patient_login.php">Logout</a>
         </div>
       </div>
     </div>
