@@ -1,4 +1,3 @@
-
 <?php
 
     function getsUsername()
@@ -10,22 +9,20 @@
     {
       try
       {
-        $idNum = $_SESSION['idNum'];
-        $bloodPressure = $_POST['bloodPressure'];
-        $bloodSugar = $_POST['bloodSugar'];
-        $heartRate = $_POST['heartRate'];
-        $other = $_POST['other'];
-        $summary = $_POST['summary'];
-        $prescription = $_POST['prescription'];
-        
-        $connStr = mysqli_connect("localhost","root","","doctors_db");
-        if( $connStr )
-        {
-            $query = "INSERT INTO patient_medical_record (idNum,blood_pressure,blood_sugar,ht_rate,other,summary,prescription) VALUES (NULL,'$bloodPressure','$bloodSugar','$heartRate','$other','$summary','$prescription')";
-            $result = mysqli_query($connStr, $query);
-            
-            //header("location: patient_dashboard.html");
-        }
+          $idNum = $_SESSION['idNum'];
+          $bloodPressure = $_POST['bloodPressure'];
+          $bloodSugar = $_POST['bloodSugar'];
+          $heartRate = $_POST['heartRate'];
+          $other = $_POST['other'];
+          $summary = $_POST['summary'];
+          $prescription = $_POST['prescription'];
+          
+          $connStr = mysqli_connect("localhost","root","","doctors_db");
+          if( $connStr )
+          {
+              $query = "INSERT INTO patient_medical_record (idNum,blood_pressure,blood_sugar,ht_rate,other,summary,prescription) VALUES (NULL,'$bloodPressure','$bloodSugar','$heartRate','$other','$summary','$prescription')";
+              $result = mysqli_query($connStr, $query);
+          }
       }
       catch(Exception $ex)
       {
@@ -35,6 +32,9 @@
       {
           // Close database
           mysqli_close($connStr);
+
+          // Redirect to patient_dashboard.php
+          echo "";
       }    
     }
 ?>

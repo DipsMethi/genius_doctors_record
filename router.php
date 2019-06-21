@@ -22,7 +22,7 @@
 
         $connectionString = mysqli_connect("localhost", "root", "", "doctors_db");
         
-        $result = mysqli_query($connectionString, "SELECT * FROM patient_profile WHERE idNum='$_idNum' && pswd='$_password'");
+        $result = mysqli_query($connectionString, "SELECT idNum,pswd FROM patient_profile WHERE idNum='$_idNum' && pswd='$_password'");
         if(!$result) die("Fatal error");
 
         $rows = mysqli_num_rows($result);
