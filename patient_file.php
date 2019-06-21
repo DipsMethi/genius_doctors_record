@@ -1,3 +1,44 @@
+
+<?php
+
+    function getsUsername()
+    {
+        // Returns user's name
+    }
+
+    if((isset($_POST['save']) ))
+    {
+      try
+      {
+        $idNum = $_SESSION['idNum'];
+        $bloodPressure = $_POST['bloodPressure'];
+        $bloodSugar = $_POST['bloodSugar'];
+        $heartRate = $_POST['heartRate'];
+        $other = $_POST['other'];
+        $summary = $_POST['summary'];
+        $prescription = $_POST['prescription'];
+        
+        $connStr = mysqli_connect("localhost","root","","doctors_db");
+        if( $connStr )
+        {
+            $query = "INSERT INTO patient_medical_record (idNum,blood_pressure,blood_sugar,ht_rate,other,summary,prescription) VALUES (NULL,'$bloodPressure','$bloodSugar','$heartRate','$other','$summary','$prescription')";
+            $result = mysqli_query($connStr, $query);
+            
+            //header("location: patient_dashboard.html");
+        }
+      }
+      catch(Exception $ex)
+      {
+          alert( "Exception ex: " . $ex->getMessage() );
+      }
+      finally
+      {
+          // Close database
+          mysqli_close($connStr);
+      }    
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -307,39 +348,6 @@
             <h1 class="h3 mb-0 text-gray-800">Patient File</h1>
           </div>
           <!--- Avatar --> 
-          <?php
-
-              if((isset($_POST['save']) ))
-              {
-                try
-                {
-                    //$idNum = $_SESSION['idNum'];
-                  $bloodPressure = $_POST['bloodPressure'];
-                  $bloodSugar = $_POST['bloodSugar'];
-                  $heartRate = $_POST['heartRate'];
-                  $other = $_POST['other'];
-                  $summary = $_POST['summary'];
-                  $prescription = $_POST['prescription'];
-                  
-                  $connStr = mysqli_connect("localhost","root","","doctors_db");
-                  if( $connStr )
-                  {
-                      $query = "INSERT INTO patient_medical_record (idNum,blood_pressure,blood_sugar,ht_rate,other,summary,prescription) VALUES (NULL,'$bloodPressure','$bloodSugar','$heartRate','$other','$summary','$prescription')";
-                      $result = mysqli_query($connStr, $query);
-                      
-                      //header("location: patient_dashboard.html");
-                  }
-                }
-                catch(Exception $ex)
-                {
-                    alert( "Exception ex: " . $ex->getMessage() );
-                }
-                finally
-                {
-                    // Close database
-                }    
-              }
-          ?>
 
           <!--- Form --->
           <div class="container-fluid">
