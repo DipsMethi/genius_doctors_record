@@ -707,11 +707,7 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
-<<<<<<< HEAD
-  <script data-main="JS/main.js" src="JS/require.js"></script>
-=======
   <script data-main="JS/main.js" src="js/require.js"></script>
->>>>>>> bec20a45bbde805c663a639bb8be053b4d2bffee
 
 </body>
 
