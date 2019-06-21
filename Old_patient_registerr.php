@@ -38,122 +38,14 @@
         </div>
         <div class="sidebar-brand-text mx-3">Doctors Record</div>
       </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-              <i class="fa fa-book"></i>
-              <span>Medical Record</span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Patient File:</h6>
-                <a class="collapse-item" href="write-patient_file.html">Write</a>
-                <a class="collapse-item" href="utilities-border.html">Read</a>    
-              </div>
-            </div>
-          </li>
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-                <i class="fa fa-sticky-note" aria-hidden="true"></i>
-            <span>Prescription</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fa fa-window-close"></i>
-          <span>Allergies</span></a>
-      </li>
-      <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-              <i class="fas fa-history"></i>
-              <span>Next Appointment</span></a>
-     </li>
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-calendar"></i>
-          <span>Calender</span></a>
-      </li>
-      <hr class="sidebar-divider my-0"><br>
-            <!-- Heading -->
-            <div class="sidebar-heading">
-              Doctors Recomendations
-            </div>
-      
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                    <a class="nav-link" href="charts.html">
-                      <i class="fa fa-cart-plus"></i>
-                      <span>Diet</span></a>
-                  </li>
-                  <li class="nav-item">
-                        <a class="nav-link" href="charts.html">
-                          <i class="fa fa-beer"></i>
-                          <span>Upstain</span></a>
-                      </li>
-            <hr class="sidebar-divider my-0"><br>
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Extras
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-              <i class="fa fa-thumbs-up"></i>
-              <span>Advices</span></a>
-          </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fa fa-heart"></i>
-          <span>Healthy Tips</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">GYM</a>
-            <a class="collapse-item" href="utilities-border.html">Helthy Advice</a>
-            <a class="collapse-item" href="utilities-border.html">Cooking Receipe</a>
-
-          </div>
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="partient_terms&condition.html">
-          <i class="fas fa-lock"></i>
-          <span>Terms & Condition</span></a>
-      </li>
-
-      <!-- Nav Item - Tables -->
-
-
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
     </ul>
     <!-- End of Sidebar -->
-
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
       <!-- Main Content -->
       <div id="content">
-
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -170,9 +62,6 @@
 
             <!-- Nav Item - Search Dropdown (Visible Only XS) -->
             <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
               <!-- Dropdown - Messages -->
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form class="form-inline mr-auto w-100 navbar-search">
@@ -187,7 +76,6 @@
                 </form>
               </div>
             </li>
-
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
