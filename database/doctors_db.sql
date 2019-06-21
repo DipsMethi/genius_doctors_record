@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2019 at 10:21 AM
+-- Generation Time: Jun 21, 2019 at 08:33 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -25,18 +25,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cal_data`
+-- Table structure for table `appointments`
 --
 
-CREATE TABLE `cal_data` (
-  `StartTime` datetime NOT NULL,
-  `EndTime` datetime NOT NULL,
-  `Contacts` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Location` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Resources` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Details` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Subject` text COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Stores calendar information ';
+CREATE TABLE `appointments` (
+  `sub` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `descr` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `loc` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `startTime` datetime NOT NULL,
+  `endTime` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores patient appointments';
 
 -- --------------------------------------------------------
 
@@ -81,7 +79,7 @@ INSERT INTO `patient_medical_record` (`blood_pressure`, `blood_sugar`, `ht_rate`
 CREATE TABLE `patient_profile` (
   `fst_name` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `lst_name` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `pswd` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `cel_num` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `idNum` bigint(13) UNSIGNED NOT NULL
@@ -91,9 +89,10 @@ CREATE TABLE `patient_profile` (
 -- Dumping data for table `patient_profile`
 --
 
-INSERT INTO `patient_profile` (`fst_name`, `lst_name`, `password`, `cel_num`, `email`, `idNum`) VALUES
+INSERT INTO `patient_profile` (`fst_name`, `lst_name`, `pswd`, `cel_num`, `email`, `idNum`) VALUES
 ('Dipolelo', 'Methi', '1234', '0712345678', 'dips@gmail.com', 1234567891234),
-('Josh', 'Altman', '4321', '0761734875', 'josh@gmail.com', 1234567899876);
+('Josh', 'Altman', '4321', '0761734875', 'josh@gmail.com', 1234567899876),
+('David ', 'Letterman', '32536', '0795114017', 'letterman@gmail.com', 7810312345678);
 
 -- --------------------------------------------------------
 
@@ -108,7 +107,7 @@ CREATE TABLE `users` (
   `pCellNum` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pAddr1` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pCity` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `pAddr2` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pID` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pSOSNum` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `gFstName` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `gLstName` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -126,11 +125,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`pFstName`, `pLstName`, `pEmail`, `pCellNum`, `pAddr1`, `pCity`, `pAddr2`, `pSOSNum`, `gFstName`, `gLstName`, `gID`, `gCellNum`, `gAddr`, `gCity`, `iPlanType`, `iInsurer`, `iPlcyID`, `iContacts`) VALUES
-('Dipolelo', 'Methi', 'dipolelodips@gmail.com', '0795114017', 'Lucas Mangope', 'Mabopane', '59 Lebanon', '111', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Baverly Hills', 'Premium', 'Hosmed', '543678', '0795114017'),
-('Dipolelo', 'Methi', 'dipolelodips@gmail.com', '0795114017', 'Lucas Mangope', 'Mabopane', '59 Lebanon', '10111', 'Josh', 'Altman', '9401055364088', '0761734875', 'California', 'Baverly Hills', 'Standard', 'Auto & General', '3456234', '0795114017'),
-('Dipolelo', 'Methi', 'dipolelodips@gmail.com', '0795114017', 'Lucas Mangope', 'Mabopane', '59 Lebanon', '455', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Baverly Hills', 'Starter', 'OUTSurance', '32536', '0795114017'),
-('Dipolelo', 'Methi', 'dipolelodips@gmail.com', '0795114017', 'Lucas Mangope, 59 Lebanon', 'Mabopane', '59 Lebanon', '', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Baverly Hills', 'Premium', 'Hosmed', '543678', '0795114017');
+INSERT INTO `users` (`pFstName`, `pLstName`, `pEmail`, `pCellNum`, `pAddr1`, `pCity`, `pID`, `pSOSNum`, `gFstName`, `gLstName`, `gID`, `gCellNum`, `gAddr`, `gCity`, `iPlanType`, `iInsurer`, `iPlcyID`, `iContacts`) VALUES
+('David', 'Letterman', 'letterman@gmail.com', '0781234567', 'Willshire', 'New York', '7810312345678', '111', 'Dipolelo', 'Methi', '9401055364088', '0795114017', 'California', 'Baverly Hills', 'Premium', 'OUTSurance', '32536', '0795114017'),
+('Peter', 'Thiel', 'peter@gmail.com', '0795114017', 'Los Angela', 'Mabopane', '7810312345678', '0795114017', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Beverly Hills', 'Starter', 'Auto & General', '32536', '0795114017'),
+('David ', 'Letterman', 'letterman@gmail.com', '0795114017', 'Wynburg', 'Sandton', '7810312345678', '111', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Wynburg', 'Sandton', 'Premium', 'Auto & General', '32536', '0795114017');
 
 --
 -- Indexes for dumped tables

@@ -72,6 +72,8 @@ if (!$query) {
 			border-collapse: collapse;
 			font-size: 14px;
 			min-width: 537px;
+			width:80%;
+			height:60%;
 		}
 
 		.data-table th, 
@@ -421,7 +423,7 @@ if (!$query) {
          
 
 
-
+   
 	<h1>Appointment</h1>
 	<table class="data-table">
 		<caption class="title">Appointment</caption>
@@ -431,7 +433,8 @@ if (!$query) {
 				<th>SUBJECT</th>
 				<th>DESCRIPTION</th>
 				<th>LOCATION</th>
-				<th>TIME</th>
+				<th>START TIME</th>
+				<th>END TIME</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -447,6 +450,10 @@ if (!$query) {
 					<td>'.$row['item'].'</td>
 					<td>'. date('F d, Y', strtotime($row['date'])) . '</td>
 					<td>'.$amount.'</td>
+					<td>'. date('F d, Y', strtotime($row['end'])) . '</td>
+					
+					
+					
 				</tr>';
 			$total += $row['amount'];
 			$no++;
