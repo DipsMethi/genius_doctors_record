@@ -309,39 +309,40 @@
           <!--- Avatar --> 
           <?php
 
-              if((isset($_POST['save']) ))
-              {
-                try
-                {
-                    //$idNum = $_SESSION['idNum'];
-                  $bloodPressure = $_POST['bloodPressure'];
-                  $bloodSugar = $_POST['bloodSugar'];
-                  $heartRate = $_POST['heartRate'];
-                  $other = $_POST['other'];
-                  $summary = $_POST['summary'];
-                  $prescription = $_POST['prescription'];
-                  
-                  $connStr = mysqli_connect("localhost","root","","doctors_db");
-                  if( $connStr )
-                  {
-                      $query = "INSERT INTO patient_medical_record (idNum,blood_pressure,blood_sugar,ht_rate,other,summary,prescription) VALUES (NULL,'$bloodPressure','$bloodSugar','$heartRate','$other','$summary','$prescription')";
-                      $result = mysqli_query($connStr, $query);
-                      
-                      //header("location: patient_dashboard.html");
-                  }
-                }
-                catch(Exception $ex)
-                {
-                    alert( "Exception ex: " . $ex->getMessage() );
-                }
-                finally
-                {
-                    // Close database
-                }    
-              }
-          ?>
+if((isset($_POST['save']) ))
+{
+  try
+  {
+      //$idNum = $_SESSION['idNum'];
+    $bloodPressure = $_POST['bloodPressure'];
+    $bloodSugar = $_POST['bloodSugar'];
+    $heartRate = $_POST['heartRate'];
+    $other = $_POST['other'];
+    $summary = $_POST['summary'];
+    $prescription = $_POST['prescription'];
+    
+    $connStr = mysqli_connect("localhost","root","","doctors_db");
+    if( $connStr )
+    {
+        $query = "INSERT INTO patient_medical_record (idNum,blood_pressure,blood_sugar,ht_rate,other,summary,prescription) VALUES (NULL,'$bloodPressure','$bloodSugar','$heartRate','$other','$summary','$prescription')";
+        $result = mysqli_query($connStr, $query);
+        
+        //header("location: patient_dashboard.html");
+    }
+  }
+  catch(Exception $ex)
+  {
+      alert( "Exception ex: " . $ex->getMessage() );
+  }
+  finally
+  {
+      // Close database
+  }    
+}
+?>
 
-          <!--- Form --->
+
+          <!--- Form -->
           <div class="container-fluid">
                 <div class="row no-gutter">
                     <div class="d-none d-md-flex col-md-4 col-lg-12 bg-image"></div>
@@ -351,7 +352,7 @@
                                 <div class="row">
                                     <div class="container register-form">
                                         <div class="row">
-                                        <form action="#" method="POST">
+                                        <form action="makepdf.php" method="POST">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -408,6 +409,7 @@
 
       </div>
       <!-- End of Main Content -->
+      
 
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
