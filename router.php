@@ -36,7 +36,8 @@
 
     if( Authenticate() )
     {
-        header("location: patient_dashboard.html");
+        // Redirects to patient_dashboard
+        header("location: patient_dashboard.php");
     }
     else
     {
