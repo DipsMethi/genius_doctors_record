@@ -12,19 +12,86 @@
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   <script src="main.js"></script>
   <style type="text/css">
-  .clock
-  {   
-      position: absolute;
-      width: 100%;
-      top: 50%;
-      left: 50% ;
-      transform: translateX(-50%) translateY(-50%);
-      color: #224abe;
-      font-size: 64px;
-      border: 1px solid #ccc;
-      padding: 0px 5px 0px 5px;
-      /* background-image: url("clock.png"); */
-  }
+  body {
+			font-size: 15px;
+			color: #343d44;
+			font-family: "segoe-ui", "open-sans", tahoma, arial;
+			padding: 0;
+			margin: 0;
+		}
+		table {
+			margin: auto;
+			font-family: "Lucida Sans Unicode", "Lucida Grande", "Segoe Ui";
+			font-size: 12px;
+		}
+
+		h1 {
+			margin: 25px auto 0;
+			text-align: center;
+			text-transform: uppercase;
+			font-size: 17px;
+		}
+
+		table td {
+			transition: all .5s;
+		}
+		
+		/* Table */
+		.data-table {
+			border-collapse: collapse;
+			font-size: 14px;
+			min-width: 537px;
+			width:80%;
+			height:60%;
+		}
+
+		.data-table th, 
+		.data-table td {
+			border: 1px solid #e1edff;
+			padding: 7px 17px;
+		}
+		.data-table caption {
+			margin: 7px;
+		}
+
+		/* Table Header */
+		.data-table thead th {
+			background-color: #508abb;
+			color: #FFFFFF;
+			border-color: #6ea1cc !important;
+			text-transform: uppercase;
+		}
+
+		/* Table Body */
+		.data-table tbody td {
+			color: #353535;
+		}
+		.data-table tbody td:first-child,
+		.data-table tbody td:nth-child(4),
+		.data-table tbody td:last-child {
+			text-align: right;
+		}
+
+		.data-table tbody tr:nth-child(odd) td {
+			background-color: #f4fbff;
+		}
+		.data-table tbody tr:hover td {
+			background-color: #ffffa2;
+			border-color: #ffff0f;
+		}
+
+		/* Table Footer */
+		.data-table tfoot th {
+			background-color: #e5f5ff;
+			text-align: right;
+		}
+		.data-table tfoot th:first-child {
+			text-align: left;
+		}
+		.data-table tbody td:empty
+		{
+			background-color: #ffcccc;
+		}
   </style>
  
   <title>Doctors Record</title>
@@ -35,6 +102,29 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+  <?php
+
+
+$db_host = 'localhost'; // Server Name
+$db_user = 'root'; // Username
+$db_pass = ''; // Password
+$db_name = 'doctors_db'; // Database Name
+
+$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+if (!$conn) {
+	die ('Failed to connect to MySQL: ' . mysqli_connect_error());	
+}
+
+$sql = 'SELECT * 
+		FROM users';
+		
+$query = mysqli_query($conn, $sql);
+
+if (!$query) {
+	die ('SQL Error: ' . mysqli_error($conn));
+}
+?>
 
 </head>
 <body id="page-top">
@@ -332,373 +422,73 @@
           <p class="mb-4">You can browse through the list of the Doctors or search your Dr by name or City Address and their specilization</a>.</p>
 
           <!-- DataTales Example -->
-         <div class="card shadow mb-4">
+          <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">All Doctors in The List are Qualified Doctors</h6>
             </div>
             <div class="card-body">
+                <div class="row">
+                <div class="col-xl-3 col-md-6 col-sm-4">
+            <div class="dropdown">
+               <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Show
+                   <span class="caret"></span></button>
+                     <ul class="dropdown-menu">
+                       <li><a href="#">10</a></li>
+                       <li><a href="#">25</a></li>
+                       <li><a href="#">75</a></li>
+                       <li><a href="#">100</a></li>
+
+                    </ul>
+            </div>
+           </div>
+                   <div class="col-xl-5 col-md-9 col-sm-8">
+                       <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                   </div>
+            </div>
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Speciality</th>
-                      <th>City</th>
-                      <th>Address</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Name</th>
-                      <th>Speciality</th>
-                      <th>City</th>
-                      <th>Address</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>Immunologists </td>
-                      <td>Benoni</td>
-                      <td>2011/04/25 jhhhjklkjhhjkljhgjk</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>Endocrinologists</td>
-                      <td>Boksburg</td>
-                      <td>2011/07/25</td>
-                    </tr>
-                    <tr>
-                      <td>Ashton Cox</td>
-                      <td>Endocrinologists </td>
-                      <td>Brakpan</td>
-                      <td>2009/01/12</td>
-                    </tr>
-                    <tr>
-                      <td>Cedric Kelly</td>
-                      <td>Gastroenterologists </td>
-                      <td>Endocrinologists </td>
-                      <td>2012/03/29</td>
-                    </tr>
-                    <tr>
-                      <td>Airi Satou</td>
-                      <td>Gastroenterologists </td>
-                      <td>Germiston</td>
-                      <td>2008/11/28</td>
-                    </tr>
-                    <tr>
-                      <td>Brielle Williamson</td>
-                      <td>Gastroenterologists </td>
-                      <td>Johannesburg</td>
-                      <td>2012/12/02</td>
-                    </tr>
-                    <tr>
-                      <td>Herrod Chandler</td>
-                      <td>Gastroenterologists </td>
-                      <td>Krugersdorp</td>
-                      <td>2012/08/06</td>
-                    </tr>
-                    <tr>
-                      <td>Rhona Davidson</td>
-                      <td>Nephrologists</td>
-                      <td>Pretoria</td>
-                      <td>2010/10/14</td>
-                    </tr>
-                    <tr>
-                      <td>Colleen Hurst</td>
-                      <td>Nephrologists</td>
-                      <td>Randburg</td>
-                      <td>2009/09/15</td>
-                    </tr>
-                    <tr>
-                      <td>Sonya Frost</td>
-                      <td>Software Engineer</td>
-                      <td>Nephrologists</td>
-                      <td>2008/12/13</td>
-                    </tr>
-                    <tr>
-                      <td>Jena Gaines</td>
-                      <td>Nephrologists</td>
-                      <td>Roodepoort</td>
-                      <td>2008/12/19</td>
-                    </tr>
-                    <tr>
-                      <td>Quinn Flynn</td>
-                      <td>Neurologists </td>
-                      <td>Soweto</td>
-                      <td>2013/03/03</td>
-                    </tr>
-                    <tr>
-                      <td>Charde Marshall</td>
-                      <td>Neurologists </td>
-                      <td>Springs</td>
-                      <td>2008/10/16</td>
-                    </tr>
-                    <tr>
-                      <td>Haley Kennedy</td>
-                      <td>Neurologists </td>
-                      <td>Vanderbijlpark</td>
-                      <td>2012/12/18</td>
-                    </tr>
-                    <tr>
-                      <td>Tatyana Fitzpatrick</td>
-                      <td>Neurologists </td>
-                      <td>Vereeniging</td>
-                      <td>2010/03/17</td>
-                    </tr>
-                    <tr>
-                      <td>Michael Silva</td>
-                      <td>Oncologists </td>
-                      <td>Johannesburg</td>
-                      <td>2012/11/27</td>
-                    </tr>
-                    <tr>
-                      <td>Paul Byrd</td>
-                      <td>Oncologists </td>
-                      <td>Johannesburg</td>
-                      <td>2010/06/09</td>
-                    </tr>
-                    <tr>
-                      <td>Gloria Little</td>
-                      <td>Oncologists</td>
-                      <td>Johannesburg</td>
-                      <td>2009/04/10</td>
-                    </tr>
-                    <tr>
-                      <td>Bradley Greer</td>
-                      <td>Oncologists</td>
-                      <td>Johannesburg</td>
-                      <td>2012/10/13</td>
-                    </tr>
-                    <tr>
-                      <td>Dai Rios</td>
-                      <td>Ophthalmologists</td>
-                      <td>Pretoria</td>
-                      <td>2012/09/26</td>
-                    </tr>
-                    <tr>
-                      <td>Jenette Caldwell</td>
-                      <td>Ophthalmologists</td>
-                      <td>Pretoria</td>
-                      <td>2011/09/03</td>
-                    </tr>
-                    <tr>
-                      <td>Yuri Berry</td>
-                      <td>Ophthalmologists</td>
-                      <td>Pretoria</td>
-                      <td>2009/06/25</td>
-                    </tr>
-                    <tr>
-                      <td>Caesar Vance</td>
-                      <td>Ophthalmologists</td>
-                      <td>Randfontein</td>
-                      <td>2011/12/12</td>
-                    </tr>
-                    <tr>
-                      <td>Doris Wilder</td>
-                      <td>Osteopaths</td>
-                      <td>Randburg</td>
-                      <td>2010/09/20</td>
-                    </tr>
-                    <tr>
-                      <td>Angelica Ramos</td>
-                      <td>Osteopaths</td>
-                      <td>Randfontein</td>
-                      <td>2009/10/09</td>
-                    </tr>
-                    <tr>
-                      <td>Gavin Joyce</td>
-                      <td>Physiatrists</td>
-                      <td>Randburg</td>
-                      <td>2010/12/22</td>
-                    </tr>
-                    <tr>
-                      <td>Jennifer Chang</td>
-                      <td>Physiatrists</td>
-                      <td>Roodepoort</td>
-                      <td>2010/11/14</td>
-                    </tr>
-                    <tr>
-                      <td>Brenden Wagner</td>
-                      <td>Psychiatrists</td>
-                      <td>Springs</td>
-                      <td>2011/06/07</td>
-                    </tr>
-                    <tr>
-                      <td>Fiona Green</td>
-                      <td>Psychiatrists</td>
-                      <td>Roodepoort</td>
-                      <td>2010/03/11</td>
-                    </tr>
-                    <tr>
-                      <td>Shou Itou</td>
-                      <td>Psychiatrists</td>
-                      <td>Springs</td>
-                      <td>2011/08/14</td>
-                    </tr>
-                    <tr>
-                      <td>Michelle House</td>
-                      <td>Psychiatrists</td>
-                      <td>Vanderbijlpark</td>
-                      <td>2011/06/02</td>
-                    </tr>
-                    <tr>
-                      <td>Suki Burks</td>
-                      <td>Radiologists</td>
-                      <td>Brandfontein</td>
-                      <td>2009/10/22</td>
-                    </tr>
-                    <tr>
-                      <td>Prescott Bartlett</td>
-                      <td>Radiologists</td>
-                      <td>Vanderbijlpark</td>
-                      <td>2011/05/07</td>
-                    </tr>
-                    <tr>
-                      <td>Gavin Cortez</td>
-                      <td>Radiologists</td>
-                      <td>Vanderbijlpark</td>
-                      <td>2008/10/26</td>
-                    </tr>
-                    <tr>
-                      <td>Martena Mccray</td>
-                      <td>Radiologists </td>
-                      <td>Johannesburg</td>
-                      <td>2011/03/09</td>
-                    </tr>
-                    <tr>
-                      <td>Unity Butler</td>
-                      <td>Radiologists </td>
-                      <td>Johannesburg</td>
-                      <td>2009/12/09</td>
-                    </tr>
-                    <tr>
-                      <td>Howard Hatfield</td>
-                      <td>Radiologists</td>
-                      <td>Soweto</td>
-                      <td>2008/12/16</td>
-                    </tr>
-                    <tr>
-                      <td>Hope Fuentes</td>
-                      <td>Radiologists </td>
-                      <td>Carletonville</td>
-                      <td>2010/02/12</td>
-                    </tr>
-                    <tr>
-                      <td>Vivian Harrell</td>
-                      <td>Rheumatologists</td>
-                      <td>Krugersdorp</td>
-                      <td>2009/02/14</td>
-                    </tr>
-                    <tr>
-                      <td>Timothy Mooney</td>
-                      <td>Rheumatologists </td>
-                      <td>Carletonville</td>
-                      <td>2008/12/11</td>
-                    </tr>
-                    <tr>
-                      <td>Jackson Bradshaw</td>
-                      <td>Rheumatologists</td>
-                      <td>Krugersdorp</td>
-                      <td>2008/09/26</td>
-                    </tr>
-                    <tr>
-                      <td>Olivia Liang</td>
-                      <td>Rheumatologists</td>
-                      <td>Krugersdorp</td>
-                      <td>2011/02/03</td>
-                    </tr>
-                    <tr>
-                      <td>Bruno Nash</td>
-                      <td>Urologists </td>
-                      <td>Boksburg</td>
-                      <td>2011/05/03</td>
-                    </tr>
-                    <tr>
-                      <td>Sakura Yamamoto</td>
-                      <td>Urologists </td>
-                      <td>Germiston</td>
-                      <td>2009/08/19</td>
-                    </tr>
-                    <tr>
-                      <td>Thor Walton</td>
-                      <td>Urologists </td>
-                      <td>Boksburg</td>
-                      <td>2013/08/11</td>
-                    </tr>
-                    <tr>
-                      <td>Finn Camacho</td>
-                      <td>Hematologists </td>
-                      <td>Germiston</td>
-                      <td>2009/07/07</td>
-                    </tr>
-                    <tr>
-                      <td>Serge Baldwin</td>
-                      <td>Hematologists </td>
-                      <td>Vanderbijlpark</td>
-                      <td>2012/04/09</td>
-                    </tr>
-                    <tr>
-                      <td>Zenaida Frank</td>
-                      <td>Hematologists </td>
-                      <td>Germiston</td>
-                      <td>2010/01/04</td>
-                    </tr>
-                    <tr>
-                      <td>Zorita Serrano</td>
-                      <td>Hematologists </td>
-                      <td>Vanderbijlpark</td>
-                      <td>2012/06/01</td>
-                    </tr>
-                    <tr>
-                      <td>Jennifer Acosta</td>
-                      <td>Hematologists </td>
-                      <td>Germiston</td>
-                      <td>2013/02/01</td>
-                    </tr>
-                    <tr>
-                      <td>Cara Stevens</td>
-                      <td>Internists </td>
-                      <td>Pretoria</td>
-                      <td>2011/12/06</td>
-                    </tr>
-                    <tr>
-                      <td>Hermione Butler</td>
-                      <td>Nephrologists</td>
-                      <td>Pretoria</td>
-                      <td>2011/03/21</td>
-                    </tr>
-                    <tr>
-                      <td>Lael Greer</td>
-                      <td>Internists </td>
-                      <td>Pretoria</td>
-                      <td>2009/02/27</td>
-                    </tr>
-                    <tr>
-                      <td>Jonas Alexander</td>
-                      <td>Ophthalmologists </td>
-                      <td>Randfontein</td>
-                      <td>2010/07/14</td>
-                    </tr>
-                    <tr>
-                      <td>Shad Decker</td>
-                      <td>Ophthalmologists </td>
-                      <td>Randfontein</td>
-                      <td>2008/11/13</td>
-                    </tr>
-                    <tr>
-                      <td>Michael Bruce</td>
-                      <td>Anesthesiologists</td>
-                      <td>Vereeniging</td>
-                      <td>2011/06/27</td>
-                    </tr>
-                    <tr>
-                      <td>Donna Snider</td>
-                      <td>Cardiologists </td>
-                      <td>Vereeniging</td>
-                      <td>2011/01/25</td>
-                    </tr>
-                  </tbody>
+
+                <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                
+                  
+	<table class="data-table">
+		
+		<thead>
+			<tr>
+                <th>Number</th>
+                <th>Name</th>
+				<th>Speciality</th>
+				<th>City</th>
+				<th>Age</th>
+				<th>Start date</th>
+				<th>Salary</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php
+        $no 	= 1;
+        //$no = $_POST['numbers'];
+		
+		while ($row = mysqli_fetch_array($query))
+		{
+			
+			echo '<tr>
+					<td>'.$no.'</td>
+					<td>'.$row['pFstName'].'</td>
+                    <td>'.$row['pLstName'].'</td>
+                    <td>'.$row['pLstName'].'</td>
+                    <td>'.$row['pLstName'].'</td>
+                    <td>'.$row['pLstName'].'</td>
+                    <td>'.$row['pLstName'].'</td>
+				
+					
+				</tr>';
+			
+			$no++;
+		}?>
+		</tbody>
+		
+	</table>
+
                 </table>
               </div>
             </div>

@@ -1,8 +1,10 @@
 
 <?php
     // Start session
-    session_start();
-    $_SESSION['id'] = $_POST['id'];
+    if(session_start())
+    {
+        $_SESSION['id'] = $_POST['id'];
+    }
 
     // Displays message box with $msg
     function alert($msg)
@@ -19,7 +21,9 @@
         $_password = $_POST['pswd'];
 
         $connectionString = mysqli_connect("localhost", "root", "", "doctors_db");
-        $result = mysqli_query($connectionString, "SELECT * FROM patient_profile WHERE idNum='$_idNum' && password='$_password'");
+        
+        $result = mysqli_query($connectionString, "SELECT idNum,pswd FROM patient_profile WHERE idNum='$_idNum' && pswd='$_password'");
+        if(!$result) die("Fatal error");
 
         $rows = mysqli_num_rows($result);
         if( $rows > 0 )
@@ -32,7 +36,8 @@
 
     if( Authenticate() )
     {
-        header("location: patient_dashboard.html");
+        // Redirects to patient_dashboard
+        header("location: patient_dashboard.php");
     }
     else
     {

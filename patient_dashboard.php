@@ -1,4 +1,4 @@
-<?php include("rateServer.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -328,6 +328,16 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+          <?php
+              // Retrieving users name
+              // Connect to the database
+              $conn = mysqli_connect("localhost", "root", "", "doctors_db");
+              // Get current user's id
+              //$userID = $_SESSION['id'];
+
+              //$query = "SELECT * From patient_profile WHERE idNum=$_SESSION['id']";
+          ?>
+
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Welcome User</h1>
@@ -556,7 +566,7 @@
                   <div class="text-center">
                    <!-- <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
                    -->
-                   <div align="center" style="background: #000; padding: 50px;color:white;">
+    <!--                <div align="center" style="background: #000; padding: 50px;color:white;">
                     <i class="fa fa-star fa-2x" data-index="0"></i>
                     <i class="fa fa-star fa-2x" data-index="1"></i>
                     <i class="fa fa-star fa-2x" data-index="2"></i>
@@ -623,7 +633,7 @@
             $('.fa-star').css('color', 'white');
         }
     </script>
-
+ -->
                    
                   </div>
                 </div>
@@ -697,11 +707,7 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
-<<<<<<< HEAD
-  <script data-main="JS/main.js" src="JS/require.js"></script>
-=======
   <script data-main="JS/main.js" src="js/require.js"></script>
->>>>>>> bec20a45bbde805c663a639bb8be053b4d2bffee
 
 </body>
 

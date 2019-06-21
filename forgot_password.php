@@ -21,13 +21,25 @@
                 <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
                 <p class="mb-4">We get it, stuff happens. Just enter your email address below and we'll send you a link to reset your password!</p>
               </div>
-              <form>
+
+            <?php
+                // Checks if RESET PASSWORD is clicked
+                if(isset($_POST['btnReset']))
+                {
+                  $email = $_POST['txtEmail'];
+                  $subject = NULL;
+                  $messsage = NULL;
+                    // Send email with link to reset password
+                }
+            ?>
+
+              <form method="POST" action="#">
                 <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <input type="email" id="inputEmail" name="txtEmail" class="form-control" placeholder="Email address" required autofocus>
                   <label for="inputEmail">Email address</label>
                 </div>
 
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="resetPassword" type="submit">Reset Password</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="resetPassword" name="btnReset" type="submit">Reset Password</button>
               </form>
             </div>
           </div>

@@ -38,122 +38,14 @@
         </div>
         <div class="sidebar-brand-text mx-3">Doctors Record</div>
       </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-              <i class="fa fa-book"></i>
-              <span>Medical Record</span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Patient File:</h6>
-                <a class="collapse-item" href="write-patient_file.html">Write</a>
-                <a class="collapse-item" href="utilities-border.html">Read</a>    
-              </div>
-            </div>
-          </li>
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-                <i class="fa fa-sticky-note" aria-hidden="true"></i>
-            <span>Prescription</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fa fa-window-close"></i>
-          <span>Allergies</span></a>
-      </li>
-      <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-              <i class="fas fa-history"></i>
-              <span>Next Appointment</span></a>
-     </li>
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-calendar"></i>
-          <span>Calender</span></a>
-      </li>
-      <hr class="sidebar-divider my-0"><br>
-            <!-- Heading -->
-            <div class="sidebar-heading">
-              Doctors Recomendations
-            </div>
-      
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                    <a class="nav-link" href="charts.html">
-                      <i class="fa fa-cart-plus"></i>
-                      <span>Diet</span></a>
-                  </li>
-                  <li class="nav-item">
-                        <a class="nav-link" href="charts.html">
-                          <i class="fa fa-beer"></i>
-                          <span>Upstain</span></a>
-                      </li>
-            <hr class="sidebar-divider my-0"><br>
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Extras
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-              <i class="fa fa-thumbs-up"></i>
-              <span>Advices</span></a>
-          </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fa fa-heart"></i>
-          <span>Healthy Tips</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">GYM</a>
-            <a class="collapse-item" href="utilities-border.html">Helthy Advice</a>
-            <a class="collapse-item" href="utilities-border.html">Cooking Receipe</a>
-
-          </div>
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="partient_terms&condition.html">
-          <i class="fas fa-lock"></i>
-          <span>Terms & Condition</span></a>
-      </li>
-
-      <!-- Nav Item - Tables -->
-
-
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
     </ul>
     <!-- End of Sidebar -->
-
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
       <!-- Main Content -->
       <div id="content">
-
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -170,9 +62,6 @@
 
             <!-- Nav Item - Search Dropdown (Visible Only XS) -->
             <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
               <!-- Dropdown - Messages -->
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form class="form-inline mr-auto w-100 navbar-search">
@@ -187,7 +76,6 @@
                 </form>
               </div>
             </li>
-
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -341,11 +229,11 @@
                         // Retrieve patient form data
                         $pFirstName = $_POST['pFirstName'];
                         $pLastName = $_POST['pLastName'];
+                        $pID = $_POST['pID'];
                         $pEmail = $_POST['pEmail'];
                         $pCell = $_POST['pCell'];
                         $pSOS = $_POST['pSOS'];
                         $pAddr1 = $_POST['pAddr1'];
-                        $pAddr2 = $_POST['pAddr2'];
                         $pCity = $_POST['pCity'];
                         // Get guarantor data
                         $gFirstName = $_POST['gFirstName'];
@@ -361,31 +249,42 @@
                         $iCell = $_POST['iCell'];
 
                         // Query string
-                        $query = "INSERT INTO users (pFstName,pLstName,pEmail
-                                                    ,pCellNum,pAddr1,pCity,pAddr2
+                        $query = "INSERT INTO users (pFstName,pLstName,pID
+                                                    ,pCellNum,pAddr1,pCity,pEmail
                                                     ,pSOSNum,gFstName,gLstName,gID
                                                     ,gCellNum,gAddr,gCity,iPlanType
                                                     ,iInsurer,iPlcyID,iContacts) 
-                                              VALUES('$pFirstName','$pLastName','$pEmail'
-                                                    ,'$pCell','$pAddr1','$pCity','$pAddr2'
+                                              VALUES('$pFirstName','$pLastName','$pID'
+                                                    ,'$pCell','$pAddr1','$pCity','$pEmail'
                                                     ,'$pSOS','$gFirstName','$gLastName'
                                                     ,'$gID','$gCell','$gAddr','$gCity'
-                                                    ,'$iTypePlan','$insurer','$policyID','$iCell')";             
-                        if(mysqli_query($connStr, $query) == TRUE)
+                                                    ,'$iTypePlan','$insurer','$policyID','$iCell');";
+                        // Upon registering, the system automatically creates user profile for new user      
+                        $query .= "INSERT INTO patient_profile (idNum,fst_name,lst_name
+                                                              ,pswd,cel_num,email)
+                                              VALUE ('$pID','$pFirstName','$pLastName'
+                                              ,'$policyID','$pCell','$pEmail');"; 
+                                            
+                        if(mysqli_multi_query($connStr, $query) == TRUE)
                         {
                             // Display modal and redirect to patient login
                             echo "<script>
                                   // Show alert after successful registration
-                                  alert(\"Thank you for registering\");
+                                  alert(\"Thank you for registering.\");
                                 
                                   // Redirecting to patient_login.php
                                   window.location.href = 'patient_login.php';
                                   </script>";
                         }
+                        else
+                        {
+                            echo "<script> alert(\"Some internal error has occured.\nPlease register later.\"); </script>";
+                        }
                     } 
                 }
                 catch(Exception $ex)
                 {
+                    // Alert exception
                     alert('Exception: ' . $ex->getMessage());
                 }
                 finally
@@ -409,7 +308,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_name" type="text" name="pFirstName" class="form-control" placeholder="First name" required="required"
+                                    <input id="form_name" type="text" name="pFirstName" class="form-control" placeholder="First Name" required="required"
                                         data-error="Firstname is required.">
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -425,14 +324,14 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_email" type="email" name="pEmail" class="form-control" placeholder="Email" required="required"
+                                    <input id="form_email" type="text" name="pID" class="form-control" placeholder="ID" required="required"
                                         data-error="Valid email is required.">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_phone" type="tel" name="pCell" class="form-control" placeholder="CellPhone Number">
+                                    <input id="form_phone" type="tel" name="pCell" class="form-control" placeholder="Cellphone Number">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -455,13 +354,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_address" type="address" name="pAddr2" class="form-control" placeholder="Address 2 (Optional)">
+                                    <input id="form_address" type="email" name="pEmail" class="form-control" placeholder="Email">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_phone" type="tel" name="pSOS" class="form-control" placeholder="Emergency phone">
+                                    <input id="form_phone" type="tel" name="pSOS" class="form-control" placeholder="Emergency Phone">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -571,7 +470,7 @@
 
   <div class="custom-control custom-checkbox mb-3">
       <input type="checkbox" class="custom-control-input" id="tc" onclick="toggleRegister(this)">
-      <label class="custom-control-label" for="tc"><a class="small" href="terms_and_condition.html">Terms and Conditions</a></label>
+      <label class="custom-control-label" for="tc"><a class="small" href="patient_terms&conditions.html">Terms and Conditions</a></label>
   </div>
   <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" id="register" name="register" disabled>REGISTER</button>
 </form>
