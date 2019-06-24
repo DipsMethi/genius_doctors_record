@@ -1,11 +1,6 @@
 <?php
     session_start();
 
-    function getsUsername()
-    {
-        // Returns user's name
-    }
-
     $id = $_GET['id'];
     $row = getMedicalProfile($id); // Gets profile of patient
 
