@@ -348,7 +348,6 @@
             <h1 class="h3 mb-0 text-gray-800">Patient File</h1>
           </div>
           <!--- Avatar --> 
-<<<<<<< HEAD
           <?php
 
 if((isset($_POST['save']) ))
@@ -385,11 +384,12 @@ if((isset($_POST['save']) ))
 
 
           <!--- Form -->
-=======
-
-          <!--- Form --->
->>>>>>> 7c9a0561ada45cf2d67050e007e2805590800d36
-          <div class="container-fluid">
+<!--<a href="makepdf.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+-->
+<form action="report.php" method="POST" style="margin-left:50px">
+  <input type="submit" class="btn btn-primary" name="report" value="Generate Report">
+</form>
+<div class="container-fluid">
                 <div class="row no-gutter">
                     <div class="d-none d-md-flex col-md-4 col-lg-12 bg-image"></div>
                     <div class="col-md-8 col-lg-12">
@@ -398,7 +398,7 @@ if((isset($_POST['save']) ))
                                 <div class="row">
                                     <div class="container register-form">
                                         <div class="row">
-                                        <form action="makepdf.php" method="POST">
+                                        <form action="#" method="POST">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
