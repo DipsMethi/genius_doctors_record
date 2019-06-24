@@ -1,8 +1,7 @@
 <?php
-    session_start();
 
     $id = $_GET['id'];
-    $row = getMedicalProfile($id); // Gets profile of patient
+    $row = getMedicalProfile($id); // Gets patients latest medical history 
 
     if((isset($_POST['save']) ))
     {
@@ -32,8 +31,7 @@
           mysqli_close($connStr);
 
           // Redirect to patient_dashboard.php
-          echo "<script> window.location.href = 'patient_dashboard.php'; </script>";
-                
+          echo "<script> window.location.href = 'patient_dashboard.php'; </script>";       
       }    
     }
 
@@ -42,7 +40,6 @@
         try
         {
             $conStr = mysqli_connect("localhost","root","","doctors_db");
-
             $query = " SELECT * FROM patient_medical_record WHERE idNum='$id' ";
             //$query .= " SELECT fst_name,email FROM patient_profile WHERE idNum ='$id' ";
 
@@ -106,7 +103,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="patient_file.php">
+        <a class="nav-link" href="">
           <i class="fa fa-book"></i>
           <span>Patient File</span></a>
       </li>
@@ -347,7 +344,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="patient_profile.php?id=<?php echo $id; ?>">
+                <a class="dropdown-item" href="patient_profile.php?id=<?php $id; ?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
