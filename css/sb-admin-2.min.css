@@ -140,7 +140,8 @@ blockquote {
 
 b,
 strong {
-    font-weight: bolder
+    font-weight: bolder;
+    padding-bottom: 20px
 }
 
 small {
