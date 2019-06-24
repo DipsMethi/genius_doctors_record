@@ -5,11 +5,13 @@
         // Returns user's name
     }
 
+    $id = $_GET['id'];
+    $row = getMedicalProfile($id); // Gets profile of patient
+
     if((isset($_POST['save']) ))
     {
       try
       {
-          $idNum = $_SESSION['idNum'];
           $bloodPressure = $_POST['bloodPressure'];
           $bloodSugar = $_POST['bloodSugar'];
           $heartRate = $_POST['heartRate'];
@@ -20,7 +22,7 @@
           $connStr = mysqli_connect("localhost","root","","doctors_db");
           if( $connStr )
           {
-              $query = "INSERT INTO patient_medical_record (idNum,blood_pressure,blood_sugar,ht_rate,other,summary,prescription) VALUES (NULL,'$bloodPressure','$bloodSugar','$heartRate','$other','$summary','$prescription')";
+              $query = "INSERT INTO patient_medical_record (idNum,blood_pressure,blood_sugar,ht_rate,other,summary,prescription) VALUES ('$id','$bloodPressure','$bloodSugar','$heartRate','$other','$summary','$prescription')";
               $result = mysqli_query($connStr, $query);
           }
       }
@@ -34,9 +36,35 @@
           mysqli_close($connStr);
 
           // Redirect to patient_dashboard.php
-          echo "";
+          echo "<script> window.location.href = 'patient_dashboard.php'; </script>";
+                
       }    
     }
+
+    function getMedicalProfile($id)
+    {
+        try
+        {
+            $conStr = mysqli_connect("localhost","root","","doctors_db");
+
+            $query = " SELECT * FROM patient_medical_record WHERE idNum='$id' ";
+            //$query .= " SELECT fst_name,email FROM patient_profile WHERE idNum ='$id' ";
+
+            $result = mysqli_query($conStr,$query);
+            
+            if(mysqli_num_rows($result) > 0)
+                return mysqli_fetch_array($result);
+        }
+        catch(Exception $e)
+        {
+            echo "<script> alert($e); </script>";
+        }
+        finally
+        {
+            mysqli_close($conStr);
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -318,12 +346,12 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="patient_login.php" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Amanda</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $id; ?></span>
                 <img class="img-profile rounded-circle" src="img/images.jpg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="patient_profile.php">
+                <a class="dropdown-item" href="patient_profile.php?id=<?php echo $id; ?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -364,31 +392,31 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Blood Pressure *"
-                                                            value="" id="bloodPressure" name="bloodPressure"/>
+                                                            value="<?php echo $row[0];?>" id="bloodPressure" name="bloodPressure"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Heart Rate *"
-                                                            value="" id="heartRate" name="heartRate"/>
+                                                            value="<?php echo $row[1];?>" id="heartRate" name="heartRate"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Blood Sugar *"
-                                                            value="" id="bloodSugar" name="bloodSugar" />
+                                                            value="<?php echo $row[2];?>" id="bloodSugar" name="bloodSugar" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="Other *"
-                                                            value="" id="other" name="other"/>
+                                                            value="<?php echo $row[3];?>" id="other" name="other"/>
                                                     </div>
                                                 </div>  
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="summary">Summary:</label>
-                                                        <textarea class="form-control" rows="5" id="summary" name="summary"></textarea>
+                                                        <textarea class="form-control" rows="5" id="summary" name="summary"><?php echo $row[4]; ?></textarea>
                                                       </div>
                                                 </div>                                         
                                             </div>
@@ -396,7 +424,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="Prescription">Prescription:</label>
-                                                    <textarea class="form-control" rows="5" id="prescription" name="prescription"></textarea>
+                                                    <textarea class="form-control" rows="5" id="prescription" name="prescription"><?php echo $row[5]; ?></textarea>
                                                   </div>
                                             </div>
                                                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="save" name="save" type="submit">SAVE</button>                                        
