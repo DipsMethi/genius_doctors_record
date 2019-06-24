@@ -1,4 +1,58 @@
 
+<?php
+
+    require_once "session_manager.php";
+    session_start();
+
+    try
+    {
+        $id = $_POST['id'];
+        $pswd = $_POST['pswd'];
+
+        if( !isValid( $id , $pswd ) )
+            header("location: patient_login.php");
+
+        $session = new Session( $id , $pswd );
+
+        if( !$session->login($id, $pswd) ) { alert("Could not start session."); }
+    }
+    catch(Exception $e)
+    {
+        alert($e);
+    }
+    
+    // Displays message box with $msg
+    function alert($msg)
+    {
+        echo "<script type='text/javascript'> alert('$msg'); </script>";
+    }
+
+    function isValid($id, $pswd)
+    {
+        try
+        {
+            $conStr = mysqli_connect("localhost","root","","doctors_db");
+            $res = null;
+            $result = mysqli_query($conStr,"SELECT idNum,pswd 
+                                FROM patient_profile 
+                                WHERE idNum='$id' && pswd='$pswd'");
+            
+            if(mysqli_num_rows($result) > 0)
+                return true;
+            else
+                return false;
+        }
+        catch(Exception $e)
+        {
+            echo "<script> alert($e); </script>";
+        }
+        finally
+        {
+            mysqli_close($conStr);
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +113,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="patient_file.php">
+        <a class="nav-link" href="patient_file.php?id=<?php echo $_SESSION['id']; ?>">
           <i class="fa fa-book"></i>
           <span>Patient File</span></a>
       </li>
@@ -295,12 +349,12 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Amanda</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><strong><?php echo $_SESSION['fstName']; ?></strong></span>
                 <img class="img-profile rounded-circle" src="img/images.jpg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="patient_profile.php">
+                <a class="dropdown-item" href="patient_profile.php?id=<?php echo $_SESSION['id']; ?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -328,19 +382,9 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <?php
-              // Retrieving users name
-              // Connect to the database
-              $conn = mysqli_connect("localhost", "root", "", "doctors_db");
-              // Get current user's id
-              //$userID = $_SESSION['id'];
-
-              //$query = "SELECT * From patient_profile WHERE idNum=$_SESSION['id']";
-          ?>
-
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Welcome User</h1>
+            <h1 class="h3 mb-0 text-gray-800">Welcome, <strong><?php echo $_SESSION['fstName']; ?></strong></h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
 
