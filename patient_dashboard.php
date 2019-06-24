@@ -609,8 +609,8 @@
                 <div class="card-body">
                   <div class="text-center">
                    <!-- <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
-                   -->
-    <!--                <div align="center" style="background: #000; padding: 50px;color:white;">
+                   
+                   <div align="center" style="background: rgb(243, 243, 243); padding: 50px;color:white;">
                     <i class="fa fa-star fa-2x" data-index="0"></i>
                     <i class="fa fa-star fa-2x" data-index="1"></i>
                     <i class="fa fa-star fa-2x" data-index="2"></i>
@@ -618,7 +618,19 @@
                     <i class="fa fa-star fa-2x" data-index="4"></i>
                     <br><br>
                     <?php echo round($avg,2) ?>
-                </div>
+                   </div>
+
+                   -->
+
+                   <div align="center" style="background: rgb(243, 243, 243); padding: 50px;color:white;">
+                    <i class="fa fa-star fa-2x" data-index="0"></i>
+                    <i class="fa fa-star fa-2x" data-index="1"></i>
+                    <i class="fa fa-star fa-2x" data-index="2"></i>
+                    <i class="fa fa-star fa-2x" data-index="3"></i>
+                    <i class="fa fa-star fa-2x" data-index="4"></i>
+                    <br><br>
+                    <?php echo round($avg,2) ?>
+                   </div>
 
                 <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script>
@@ -751,7 +763,7 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
-  <script data-main="JS/main.js" src="js/require.js"></script>
+  <script data-main="JS/main.js" src="JS/require.js"></script>
 
 </body>
 
