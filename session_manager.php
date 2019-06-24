@@ -48,7 +48,7 @@
         }
 
         // Ends the session
-        function destroy_session()
+        private function destroy_session()
         {
             //session_start();
             $_SESSION = array();
@@ -56,7 +56,9 @@
             session_destroy();
         }
 
-        function getProfile($id,$pswd)
+        // Gets user profile from patient_profile table
+        // Returns the record where idNum=$id
+        private function getProfile($id,$pswd)
         {
             try
             {
