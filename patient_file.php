@@ -369,9 +369,34 @@
             <h1 class="h3 mb-0 text-gray-800">Patient File</h1>
           </div>
           <!--- Avatar --> 
+<<<<<<< HEAD
+          <?php
+
+if((isset($_POST['save']) ))
+{
+  try
+  {
+      //$idNum = $_SESSION['idNum'];
+    $bloodPressure = $_POST['bloodPressure'];
+    $bloodSugar = $_POST['bloodSugar'];
+    $heartRate = $_POST['heartRate'];
+    $other = $_POST['other'];
+    $summary = $_POST['summary'];
+    $prescription = $_POST['prescription'];
+=======
+>>>>>>> fe58dabd4cd88434245308281de25f07bd28768f
     
           <!--- Form -->
+<<<<<<< HEAD
+<!--<a href="makepdf.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+-->
+<form action="report.php" method="POST" style="margin-left:50px">
+  <input type="submit" class="btn btn-primary" name="report" value="Generate Report">
+</form>
+<div class="container-fluid">
+=======
           <div class="container-fluid">
+>>>>>>> fe58dabd4cd88434245308281de25f07bd28768f
                 <div class="row no-gutter">
                     <div class="d-none d-md-flex col-md-4 col-lg-12 bg-image"></div>
                     <div class="col-md-8 col-lg-12">
@@ -380,7 +405,7 @@
                                 <div class="row">
                                     <div class="container register-form">
                                         <div class="row">
-                                        <form action="makepdf.php" method="POST">
+                                        <form action="#" method="POST">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">

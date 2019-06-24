@@ -390,8 +390,13 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
+<<<<<<< HEAD
+            <h1 class="h3 mb-0 text-gray-800">Welcome User</h1>
+            <!--<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+=======
             <h1 class="h3 mb-0 text-gray-800">Welcome, <strong><?php echo $_SESSION['fstName']; ?></strong></h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+>>>>>>> fe58dabd4cd88434245308281de25f07bd28768f
           </div>
 
           <!-- Content Row -->
