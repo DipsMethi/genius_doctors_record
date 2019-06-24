@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2019 at 08:33 AM
+-- Generation Time: Jun 24, 2019 at 11:36 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -63,12 +63,9 @@ INSERT INTO `patient_medical_record` (`blood_pressure`, `blood_sugar`, `ht_rate`
 ('30', '34', '50', 'Diabetes', 'Diagnosed with Type 2. Patient Coughs excessively.', 'Tier 2 Medicine', 0),
 ('30', '34', '50', 'Diabetes', 'Diagnosed with Type 2. Patient Coughs excessively.', 'Tier 2 Medicine', 0),
 ('25', '34', '50', 'Allergy', 'Diagnosis Complete', 'Allegex', 0),
-('30', '34', '50', 'Allergy', 'QWERTY', 'YTREWQ', 0),
-('30', '34', '50', 'Allergy', 'QWERTY', 'YTREWQ', 0),
-('30', '34', '50', 'Allergy', 'QWERTY', 'YTREWQ', 0),
-('30', '34', '50', 'Allergy', 'QWERTY', 'YTREWQ', 0),
 ('25', '34', '50', 'Diabetes', 'Nothing to add', 'Non alcoholic', 0),
-('25', '34', '50', 'Diabetes', 'Nothing to add', 'Non alcoholic', 0);
+('25', '34', '50', 'Diabetes', 'Nothing to add', 'Non alcoholic', 0),
+('45', '50', '35', 'Epilespy', 'Patient Neutralized', 'Anaesthesia', 1234567899876);
 
 -- --------------------------------------------------------
 
@@ -90,9 +87,11 @@ CREATE TABLE `patient_profile` (
 --
 
 INSERT INTO `patient_profile` (`fst_name`, `lst_name`, `pswd`, `cel_num`, `email`, `idNum`) VALUES
-('Dipolelo', 'Methi', '1234', '0712345678', 'dips@gmail.com', 1234567891234),
+('Dips', 'Methi', '2345', '0712345678', 'dips@gmail.com', 1234567891234),
 ('Josh', 'Altman', '4321', '0761734875', 'josh@gmail.com', 1234567899876),
-('David ', 'Letterman', '32536', '0795114017', 'letterman@gmail.com', 7810312345678);
+('David ', 'Letterman', '32536', '0795114017', 'letterman@gmail.com', 7810312345678),
+('Martin', 'Garrix', '5678', '5551167474', 'martin@fmf.com', 8605011234567),
+('Dipolelo', 'Methi', '32536', '0795114017', 'dipolelodips@gmail.com', 8901051234567);
 
 -- --------------------------------------------------------
 
@@ -128,7 +127,11 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`pFstName`, `pLstName`, `pEmail`, `pCellNum`, `pAddr1`, `pCity`, `pID`, `pSOSNum`, `gFstName`, `gLstName`, `gID`, `gCellNum`, `gAddr`, `gCity`, `iPlanType`, `iInsurer`, `iPlcyID`, `iContacts`) VALUES
 ('David', 'Letterman', 'letterman@gmail.com', '0781234567', 'Willshire', 'New York', '7810312345678', '111', 'Dipolelo', 'Methi', '9401055364088', '0795114017', 'California', 'Baverly Hills', 'Premium', 'OUTSurance', '32536', '0795114017'),
 ('Peter', 'Thiel', 'peter@gmail.com', '0795114017', 'Los Angela', 'Mabopane', '7810312345678', '0795114017', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Lucas Mangope', 'Beverly Hills', 'Starter', 'Auto & General', '32536', '0795114017'),
-('David ', 'Letterman', 'letterman@gmail.com', '0795114017', 'Wynburg', 'Sandton', '7810312345678', '111', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Wynburg', 'Sandton', 'Premium', 'Auto & General', '32536', '0795114017');
+('David ', 'Letterman', 'letterman@gmail.com', '0795114017', 'Wynburg', 'Sandton', '7810312345678', '111', 'Dipolelo', 'Methi', '1234567891234', '0795114017', 'Wynburg', 'Sandton', 'Premium', 'Auto & General', '32536', '0795114017'),
+('Dipolelo', 'Methi', 'dips@gmail.com', '0795114017', 'Rodeo Drive', 'Beverly Hills', '8901051234567', '1123', 'David', 'Hannerman', '1234567891234', '0701015678', 'Wynburg', 'Sandton', 'Premium', 'Auto & General', '32536', '0701015678'),
+('Elon', 'Musk', 'elon@tesla.com', '5551167474', '41 Bel Aire Road', 'California', '7810312345678', '12453', 'David', 'Hannerman', '1234567891234', '0701015678', 'Wynburg', 'LA', 'Premium', 'AIG', '9876', '0917114248'),
+('Elon', 'Musk', 'elon@tesla.com', '5551167474', '41 Bel Aire Road', 'California', '7810312345678', '98765', 'David', 'Hannerman', '1234567891234', '0701015678', 'Wynburg', 'Sandton', 'Premium', 'AIG', '9876', '0795114017'),
+('Martin', 'Garrix', 'martin@fmf.com', '5551167474', '41 Bel Aire Road', 'California', '8605011234567', '67876567', 'David', 'Hannerman', '1234567891234', '0701015678', 'Wynburg', 'Sandton', 'Standard', 'Hosmed', '5678', '0795114017');
 
 --
 -- Indexes for dumped tables
