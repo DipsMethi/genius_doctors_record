@@ -16,7 +16,7 @@ function alert($msg)
 }
 
 
-if(isset($_POST['save']))
+if(isset($_POST['report']))
 {
 
  try{
@@ -57,7 +57,8 @@ $pdf->Cell(0,10, $data['summary'] ,1,1);
 $pdf->Cell(50,10,"Prescription ",1,0);
 $pdf->Cell(0,10, $data['prescription'] ,1,1);
 
-
+$pdf->Cell(50,10,"ID Number ",1,0);
+$pdf->Cell(0,10, $data['idNum'] ,1,1);
 $pdf->Output();
 }
 }
