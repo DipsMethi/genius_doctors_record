@@ -400,14 +400,7 @@
                 <input class="file-upload" type="file" accept="image/*"/>
             </div> 
 
-<<<<<<< HEAD
           <!--- Form --->
-=======
-          
-
-
-          <!--- Form -->
->>>>>>> a3af363afff0d22978b1b1764c8893348e5cf871
           <div class="container-fluid">
                 <div class="row no-gutter">
                     <div class="d-none d-md-flex col-md-4 col-lg-12 bg-image"></div>
