@@ -1,3 +1,77 @@
+<?php
+    try
+    {
+      $id = $_GET['id'];
+      $row = getProfile($id); // Gets profile of patient
+
+      if(isset($_POST['save']))
+      {
+          $pswd = $_POST['pswd'];
+          $cPassword = $_POST['confirmPassword'];
+          
+          if( $cPassword == NULL || $cPassword != $pswd )
+          {
+              alert("Password mismach.");
+          } 
+          elseif ($pswd == $cPassword)
+          {
+              updateProfile($id);
+          } 
+      }
+    }
+    catch(Exception $ex)
+    {
+        alert($ex->getMessage());
+    }
+
+    // Displays message box with $msg
+    function alert($msg)
+    {
+        echo "<script type='text/javascript'> alert('$msg'); </script>";
+    }
+
+    function getProfile($id)
+    {
+        try
+        {
+            $conStr = mysqli_connect("localhost","root","","doctors_db");
+            $query = "SELECT * FROM patient_profile WHERE idNum='$id' ";
+            $result = mysqli_query($conStr,$query);
+            
+            if(mysqli_num_rows($result) > 0)
+                return mysqli_fetch_array($result);
+        }
+        catch(Exception $e)
+        {
+            echo "<script> alert($e); </script>";
+        }
+        finally
+        {
+            mysqli_close($conStr);
+        }
+    }
+
+    function updateProfile($id)
+    {
+        $fstName = $_POST['firstName'];
+        $lstName = $_POST['lastName'];
+        $pswd = $_POST['pswd'];
+        $email = $_POST['email'];
+
+        $c = mysqli_connect("localhost","root", "", "doctors_db");
+        $q = "UPDATE patient_profile SET fst_name ='$fstName'
+                                         ,lst_name ='$lstName'
+                                         ,pswd ='$pswd'
+                                         ,email ='$email'
+                                     WHERE idNum='$id'";
+        if(mysqli_query($c,$q))
+        {
+            echo "<script>window.location.href = 'patient_dashboard.php'</script>";
+        }
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -288,12 +362,12 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="patient_login.php" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Amanda</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row[0]; ?></span>
                 <img class="img-profile rounded-circle" src="img/images.jpg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="patient_profile.php">
+                <a class="dropdown-item" href="">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -326,9 +400,6 @@
                 <input class="file-upload" type="file" accept="image/*"/>
             </div> 
 
-          
-
-
           <!--- Form --->
           <div class="container-fluid">
                 <div class="row no-gutter">
@@ -340,43 +411,43 @@
                                     <div class="container register-form">
                                         <div class="row">
                                         </div>
-                                        <div class="form">
+                                        <form action="" method="POST">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="First Name *"
-                                                            value="" id="firstName" name="firstName"/>
+                                                            value="<?php echo $row[0]; ?>" id="firstName" name="firstName"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="tel" class="form-control" placeholder="Last Name *"
-                                                            value="" id="lastName" name="lastName"/>
+                                                            value="<?php echo $row[1]; ?>" id="lastName" name="lastName"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="password" class="form-control" placeholder="Your Password *"
-                                                            value="" id="yourPassword" name="yourPassword" />
+                                                            value="<?php echo $row[2]; ?>" id="yourPassword" name="pswd" />
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="tel" class="form-control" placeholder="Cellphone Number *"
-                                                            value="" id="cellphoneNumber" name="cellphoneNumber" />
+                                                            value="<?php echo $row[3]; ?>" id="cellphoneNumber" name="cell" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="password" class="form-control" placeholder="Confirm Password  *"
-                                                            value="" id="confirmPassword" name="confirmPassword"/>
+                                                            value="" id="confirmPassword" name="confirmPassword" required/>
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="email" class="form-control" placeholder="Email *"
-                                                            value="" id="email" name="email"/>
+                                                            value="<?php echo $row[4]; ?>" id="email" name="email"/>
                                                     </div>
                                                 </div>
                                             </div>
                                                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="save" name="save" type="submit">SAVE</button>                                        </div>
-                                    </div>
+                                      </form>
                                 </div>
                             </div>
                         </div>
