@@ -390,13 +390,8 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-<<<<<<< HEAD
-            <h1 class="h3 mb-0 text-gray-800">Welcome User</h1>
-            <!--<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
-=======
             <h1 class="h3 mb-0 text-gray-800">Welcome, <strong><?php echo $_SESSION['fstName']; ?></strong></h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
->>>>>>> fe58dabd4cd88434245308281de25f07bd28768f
+            <!--<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
           </div>
 
           <!-- Content Row -->
@@ -602,9 +597,9 @@
                   <h6 class="m-0 font-weight-bold text-primary">WEATHER FORECAST</h6>
                 </div>
                 <a class="weatherwidget-io" href="https://forecast7.com/en/n26d0028d13/midrand/" data-label_1="MIDRAND" data-label_2="WEATHER" data-theme="mountains" >MIDRAND WEATHER</a>
-<script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-</script>
+                <script>
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+                </script>
               </div>
 
 
