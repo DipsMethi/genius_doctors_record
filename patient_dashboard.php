@@ -2,7 +2,9 @@
 <?php
 
     require_once "session_manager.php";
-    session_start();
+
+    if(session_status() != PHP_SESSION_ACTIVE)
+      session_start();
 
     try
     {
@@ -14,7 +16,11 @@
 
         $session = new Session( $id , $pswd );
 
-        if( !$session->login($id, $pswd) ) { alert("Could not start session."); }
+        if( !$session->login($id, $pswd) ) 
+        { 
+            alert("Could not start session."); 
+            echo "<script> window.location.href = 'patient_login.php';</script>";
+        }
     }
     catch(Exception $e)
     {
