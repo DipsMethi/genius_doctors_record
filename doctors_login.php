@@ -36,7 +36,7 @@
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="signIn" name="signIn" type="submit">Sign in</button>
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="register" name="register" type="button" href="doctors_register.html">REGISTER</button>
                 <div class="text-center">
-                  <a class="small" href="forgot--password.php">Forgot password?</a></div>
+                  <a class="small" href="forgot_password.php">Forgot password?</a></div>
               </form>
             </div>
           </div>
