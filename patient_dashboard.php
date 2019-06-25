@@ -1,12 +1,9 @@
 
 <?php
 
-    require_once "JSUtil.php";          // Import js utiliies 
-    require_once "loginManager.php";
-    require_once "sessionManager.php";
-    
-    if(session_status() != PHP_SESSION_ACTIVE)
-      session_start();
+    require_once "Utilities/JSUtil.php";          // Import js utiliies 
+    require_once "Utilities/loginManager.php";
+    require_once "Utilities/sessionManager.php";
 
     try
     {
@@ -14,14 +11,17 @@
         $pswd = $_POST['pswd'];
 
         if( !isValid( $id , $pswd ) )
-            header("location: patient_login.php");
-
+        {
+            alert("Incorrect id/password.\nPlease ensure you're registered.");
+            route("patient_login.php");
+        }
+          
         $session = new Session( $id , $pswd );
 
         if( !$session->login($id, $pswd) ) 
         { 
-            alert("Could not start session."); 
-            echo "<script> window.location.href = 'patient_login.php';</script>";
+            alert("Incorrect id/password.\nPlease ensure you have registered."); 
+            route("patient_login.php");
         }
     }
     catch(Exception $e)
@@ -45,7 +45,7 @@
         }
         catch(Exception $e)
         {
-            echo "<script> alert($e); </script>";
+           alert($se);
         }
         finally
         {
