@@ -37,6 +37,8 @@
                     $_SESSION['lstName'] = $profile[2];
                     $_SESSION['email'] = $profile[3];
 
+                    $GLOBALS['fstName'] = $profile[1];
+                    
                     $isLoggedIn = true;
                 }
                 return $isLoggedIn;

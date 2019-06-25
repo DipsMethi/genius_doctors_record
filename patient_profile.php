@@ -1,7 +1,9 @@
 <?php
+    require_once("sessionManager.php");
+
     try
     {
-      $id = $_GET['id'];
+      $id = $_SESSION['id'];
       $row = getProfile($id); // Gets profile of patient
 
       if(isset($_POST['save']))
@@ -53,10 +55,10 @@
 
     function updateProfile($id)
     {
-        $fstName = $_POST['firstName'];
-        $lstName = $_POST['lastName'];
-        $pswd = $_POST['pswd'];
-        $email = $_POST['email'];
+        $fstName = $_SESSION['fstName'];
+        $lstName = $_SESSION['lstName'];
+        $pswd = $_SESSION['pswd'];
+        $email = $_SESSION['email'];
 
         $c = mysqli_connect("localhost","root", "", "doctors_db");
         $q = "UPDATE patient_profile SET fst_name ='$fstName'
@@ -362,7 +364,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="patient_login.php" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row[0]; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['fstName']; ?></span>
                 <img class="img-profile rounded-circle" src="img/images.jpg">
               </a>
               <!-- Dropdown - User Information -->
@@ -393,7 +395,7 @@
           </div>
           <!--- Avatar -->
           <div class="avatar-wrapper">
-                <img class="profile-pic" src="img/images.jpg" />
+                <img class="profile-pic" src="" />
                 <div class="upload-button">
                     <i class="fa fa-home" aria-hidden="true"></i>
                 </div>
