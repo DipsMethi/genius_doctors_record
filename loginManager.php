@@ -1,4 +1,5 @@
 <?php
+    require_once "Utilities/JSUtil.php";
     // This class needs refactoring
     class Session
     {
@@ -36,8 +37,6 @@
                     $_SESSION['fstName'] = $profile[1];
                     $_SESSION['lstName'] = $profile[2];
                     $_SESSION['email'] = $profile[3];
-
-                    $GLOBALS['fstName'] = $profile[1];
                     
                     $isLoggedIn = true;
                 }
@@ -52,10 +51,8 @@
         // Ends the session
         private function destroy_session()
         {
-            //session_start();
-            $_SESSION = array();
-            setcookie(session_name(), '', time() - 2592000, '/');
-            session_destroy();
+            $_SESSION = array(); // Empty session variables
+            session_destroy(); // Destroy current session
         }
 
         // Gets user profile from patient_profile table
@@ -74,7 +71,7 @@
             }
             catch(Exception $e)
             {
-                echo "<script> alert($e); </script>";
+                alert($e);
             }
             finally
             {
