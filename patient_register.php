@@ -367,6 +367,20 @@
                             </div>
                         </div>
                     <!--</div>-->
+                    <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input id="form_address" type="password" name="pPassword" class="form-control" placeholder="Password">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input id="form_phone" type="password" name="pConfirm" class="form-control" placeholder="Confirm Password">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
 </div>
        <!--Responsible for the bill-->
        <center><p><strong>Guarantor Information</strong></p></center>                    

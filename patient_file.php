@@ -370,12 +370,8 @@
             <h1 class="h3 mb-0 text-gray-800">Patient File</h1>
           </div>
           <!--- Avatar --> 
-         
-<form action="report.php" method="POST" style="margin-left:50px">
-  <input type="text" name="id" value="<?php echo $id ?>" hidden>
-  <input type="submit" class="btn btn-primary" name="report" value="Generate Report">
-</form>
-<div class="container-fluid">
+
+    
                 <div class="row no-gutter">
                     <div class="d-none d-md-flex col-md-4 col-lg-12 bg-image"></div>
                     <div class="col-md-8 col-lg-12">
