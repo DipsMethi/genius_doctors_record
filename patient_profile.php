@@ -1,5 +1,6 @@
 <?php
     require_once("sessionManager.php");
+    require_once("JSUtil.php");
 
     try
     {
@@ -24,12 +25,6 @@
     catch(Exception $ex)
     {
         alert($ex->getMessage());
-    }
-
-    // Displays message box with $msg
-    function alert($msg)
-    {
-        echo "<script type='text/javascript'> alert('$msg'); </script>";
     }
 
     function getProfile($id)
