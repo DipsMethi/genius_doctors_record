@@ -1,10 +1,10 @@
 
 <?php
 
-    require_once "Utilities/JSUtil.php";          // Import js utiliies 
-    require_once "Utilities/loginManager.php";
-    require_once "Utilities/sessionManager.php";
-
+    include "Utilities/JSUtil.php";          // Import js utiliies 
+    include "Utilities/loginManager.php";
+    include "Utilities/sessionManager.php";
+    
     try
     {
         $id = $_POST['id'];
@@ -12,21 +12,21 @@
 
         if( !isValid( $id , $pswd ) )
         {
-            alert("Incorrect id/password.\nPlease ensure you're registered.");
-            route("patient_login.php");
+          alert('Incorrect id/password.\nPlease ensure you have registered.'); 
+          route('patient_login.php');
         }
           
         $session = new Session( $id , $pswd );
 
         if( !$session->login($id, $pswd) ) 
         { 
-            alert("Incorrect id/password.\nPlease ensure you have registered."); 
-            route("patient_login.php");
+            //alert('Incorrect id/password.\nPlease ensure you have registered.'); 
+            //route('patient_login.php');
         }
     }
     catch(Exception $e)
     {
-        alert($e);
+        alert( $e->getMessage() );
     }
 
     function isValid($id, $pswd)
@@ -45,7 +45,7 @@
         }
         catch(Exception $e)
         {
-           alert($se);
+           alert( $se->getMessage() );
         }
         finally
         {
@@ -114,22 +114,22 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="patient_file.php?id=<?php echo $_SESSION['id'] ?><?php echo '&pswd=' . $_SESSION['pswd']; ?>">
+        <a class="nav-link" href="patient_file.php?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
           <i class="fa fa-book"></i>
           <span>Patient File</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="allergies.html?id=<?php echo $_SESSION['id']; ?>">
+        <a class="nav-link" href="allergies.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
           <i class="fa fa-window-close"></i>
           <span>Allergies</span></a>
       </li>
       <li class="nav-item">
-            <a class="nav-link" href="next_appointment.html?id=<?php echo $_SESSION['id']; ?>">
+            <a class="nav-link" href="next_appointment.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
               <i class="fas fa-history"></i>
               <span>Next Appointment</span></a>
      </li>
       <li class="nav-item">
-        <a class="nav-link" href="calender.html?id=<?php echo $_SESSION['id']; ?>">
+        <a class="nav-link" href="calender.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
           <i class="fas fa-calendar"></i>
           <span>Calender</span></a>
       </li>
@@ -141,12 +141,12 @@
       
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                    <a class="nav-link" href="diet.html?id=<?php echo $_SESSION['id']; ?>">
+                    <a class="nav-link" href="diet.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
                       <i class="fa fa-cart-plus"></i>
                       <span>Diet</span></a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="charts.html?id=<?php echo $_SESSION['id']; ?>">
+                        <a class="nav-link" href="charts.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
                           <i class="fa fa-beer"></i>
                           <span>Upstain</span></a>
                       </li>
@@ -158,7 +158,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-            <a class="nav-link" href="advices.html?id=<?php echo $_SESSION['id']; ?>">
+            <a class="nav-link" href="advices.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
               <i class="fa fa-thumbs-up"></i>
               <span>Advices</span></a>
           </li>
