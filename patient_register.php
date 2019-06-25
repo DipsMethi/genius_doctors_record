@@ -233,7 +233,8 @@
                         $pEmail = $_POST['pEmail'];
                         $pCell = $_POST['pCell'];
                         $pSOS = $_POST['pSOS'];
-                        $pswd = $_POST['pPswd'];
+                        $pswd = $_POST['pPassword'];
+                        $pCPswd = $_POST['pConfirm'];
                         $pAddr1 = $_POST['pAddr1'];
                         $pCity = $_POST['pCity'];
                         // Get guarantor data
@@ -249,38 +250,42 @@
                         $policyID = $_POST['policyID'];
                         $iCell = $_POST['iCell'];
 
-                        // Query string
-                        $query = "INSERT INTO users (pFstName,pLstName,pID
-                                                    ,pCellNum,pAddr1,pCity,pEmail
-                                                    ,pSOSNum, pPswd,gFstName,gLstName,gID
-                                                    ,gCellNum,gAddr,gCity,iPlanType
-                                                    ,iInsurer,iPlcyID,iContacts) 
-                                              VALUES('$pFirstName','$pLastName','$pID'
-                                                    ,'$pCell','$pAddr1','$pCity','$pEmail'
-                                                    ,'$pSOS','$pswd','$gFirstName','$gLastName'
-                                                    ,'$gID','$gCell','$gAddr','$gCity'
-                                                    ,'$iTypePlan','$insurer','$policyID','$iCell');";
-                        // Upon registering, the system automatically creates user profile for new user      
-                        $query .= "INSERT INTO patient_profile (idNum,fst_name,lst_name
-                                                              ,pswd,cel_num,email)
-                                              VALUES ('$pID','$pFirstName','$pLastName'
-                                              ,'$pswd','$pCell','$pEmail');"; 
-                                            
-                        if(mysqli_multi_query($connStr, $query) == TRUE)
+                        if($pswd == $pCPswd)
                         {
-                            // Display modal and redirect to patient login
-                            echo "<script>
-                                  // Show alert after successful registration
-                                  //alert(\"Thank you for registering.\");
-                                
-                                  // Redirecting to patient_login.php
-                                  window.location.href = 'patient_login.php';
-                                  </script>";
+                                // Query string
+                            $query = "INSERT INTO users (pFstName,pLstName,pID
+                                                        ,pCellNum,pAddr1,pCity,pEmail
+                                                        ,pSOSNum, pPswd,gFstName,gLstName,gID
+                                                        ,gCellNum,gAddr,gCity,iPlanType
+                                                        ,iInsurer,iPlcyID,iContacts) 
+                                                  VALUES('$pFirstName','$pLastName','$pID'
+                                                        ,'$pCell','$pAddr1','$pCity','$pEmail'
+                                                        ,'$pSOS','$pswd','$gFirstName','$gLastName'
+                                                        ,'$gID','$gCell','$gAddr','$gCity'
+                                                        ,'$iTypePlan','$insurer','$policyID','$iCell');";
+                            // Upon registering, the system automatically creates user profile for new user      
+                            $query .= "INSERT INTO patient_profile (idNum,fst_name,lst_name
+                                                                  ,pswd,cel_num,email)
+                                                  VALUES ('$pID','$pFirstName','$pLastName'
+                                                  ,'$pswd','$pCell','$pEmail');"; 
+                                                
+                            if(mysqli_multi_query($connStr, $query) == TRUE)
+                            {
+                                // Display modal and redirect to patient login
+                                echo "<script>
+                                      // Show alert after successful registration
+                                      //alert(\"Thank you for registering.\");
+                                    
+                                      // Redirecting to patient_login.php
+                                      window.location.href = 'patient_login.php';
+                                      </script>";
+                            }
+                            else
+                            {
+                                echo "<script> alert(\"Some internal error has occured.\nPlease register later.\"); </script>";
+                            }
                         }
-                        else
-                        {
-                            echo "<script> alert(\"Some internal error has occured.\nPlease register later.\"); </script>";
-                        }
+                        else alert("Passwords mismatch");
                     } 
                 }
                 catch(Exception $ex)
@@ -376,7 +381,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input id="form_phone" type="password" name="pConfirm" class="form-control" placeholder="Confirm Password">
+                                    <input id="form_phone" type="password" name="pConfirm" class="form-control" placeholder="Confirm Password" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
