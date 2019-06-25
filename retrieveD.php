@@ -1,23 +1,23 @@
 <?php
 
 
-$db_host = 'localhost'; // Server Name
-$db_user = 'root'; // Username
-$db_pass = ''; // Password
-$db_name = 'tutorial'; // Database Name
+$db_host = "localhost"; // Server Name
+$db_user = "root"; // Username
+$db_pass = ""; // Password
+$db_name = "doctors_db"; // Database Name
 
 $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 if (!$conn) {
 	die ('Failed to connect to MySQL: ' . mysqli_connect_error());	
 }
 
-$sql = 'SELECT * 
-		FROM sales';
+$sql = "SELECT * FROM patient_profile";
 		
 $query = mysqli_query($conn, $sql);
 
-if (!$query) {
-	die ('SQL Error: ' . mysqli_error($conn));
+if (!$query) 
+{
+	die ("SQL Error: " . mysqli_error($conn));
 }
 ?>
 <html>
@@ -429,12 +429,11 @@ if (!$query) {
 		<caption class="title">Appointment</caption>
 		<thead>
 			<tr>
-				<th>NO</th>
-				<th>SUBJECT</th>
-				<th>DESCRIPTION</th>
-				<th>LOCATION</th>
-				<th>START TIME</th>
-				<th>END TIME</th>
+				<th>ID</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Contacts</th>
+				<th>Email</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -443,20 +442,16 @@ if (!$query) {
 		$total 	= 0;
 		while ($row = mysqli_fetch_array($query))
 		{
-			$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
+			//$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
 			echo '<tr>
-					<td>'.$no.'</td>
-					<td>'.$row['name'].'</td>
-					<td>'.$row['item'].'</td>
-					<td>'. date('F d, Y', strtotime($row['date'])) . '</td>
-					<td>'.$amount.'</td>
-					<td>'. date('F d, Y', strtotime($row['end'])) . '</td>
-					
-					
-					
-				</tr>';
-			$total += $row['amount'];
-			$no++;
+					<td><a href="">'.$row[5].'<a></td>
+					<td>'.$row[0].'</td>
+          <td>'.$row[1].'</td>
+          <td>'.$row[3].'</td>
+          <td>'.$row[4].'</td>
+				    </tr>';
+			//$total += $row['amount'];
+			//$no++;
 		}?>
 		</tbody>
 		
