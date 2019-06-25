@@ -14,7 +14,7 @@
         $pswd = $_POST['pswd'];
 
         if( !isValid( $id , $pswd ) )
-            header("location: patient_login.php");
+            header("location: patient_dashboard.php");
 
         $session = new Session( $id , $pswd );
 
@@ -52,7 +52,7 @@
             mysqli_close($conStr);
         }
     }
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
