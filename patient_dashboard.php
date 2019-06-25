@@ -1,8 +1,10 @@
 
 <?php
 
-    require_once "session_manager.php";
-
+    require_once "JSUtil.php";          // Import js utiliies 
+    require_once "loginManager.php";
+    require_once "sessionManager.php";
+    
     if(session_status() != PHP_SESSION_ACTIVE)
       session_start();
 
@@ -26,19 +28,12 @@
     {
         alert($e);
     }
-    
-    // Displays message box with $msg
-    function alert($msg)
-    {
-        echo "<script type='text/javascript'> alert('$msg'); </script>";
-    }
 
     function isValid($id, $pswd)
     {
         try
         {
             $conStr = mysqli_connect("localhost","root","","doctors_db");
-            $res = null;
             $result = mysqli_query($conStr,"SELECT idNum,pswd 
                                 FROM patient_profile 
                                 WHERE idNum='$id' && pswd='$pswd'");
@@ -119,22 +114,22 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="patient_file.php?id=<?php echo $_SESSION['id']; ?>">
+        <a class="nav-link" href="patient_file.php?id=<?php echo $_SESSION['id'] ?><?php echo '&pswd=' . $_SESSION['pswd']; ?>">
           <i class="fa fa-book"></i>
           <span>Patient File</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="allergies.html">
+        <a class="nav-link" href="allergies.html?id=<?php echo $_SESSION['id']; ?>">
           <i class="fa fa-window-close"></i>
           <span>Allergies</span></a>
       </li>
       <li class="nav-item">
-            <a class="nav-link" href="next_appointment.html">
+            <a class="nav-link" href="next_appointment.html?id=<?php echo $_SESSION['id']; ?>">
               <i class="fas fa-history"></i>
               <span>Next Appointment</span></a>
      </li>
       <li class="nav-item">
-        <a class="nav-link" href="calender.html">
+        <a class="nav-link" href="calender.html?id=<?php echo $_SESSION['id']; ?>">
           <i class="fas fa-calendar"></i>
           <span>Calender</span></a>
       </li>
@@ -146,12 +141,12 @@
       
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                    <a class="nav-link" href="diet.html">
+                    <a class="nav-link" href="diet.html?id=<?php echo $_SESSION['id']; ?>">
                       <i class="fa fa-cart-plus"></i>
                       <span>Diet</span></a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="charts.html?id=<?php echo $_SESSION['id']; ?>">
                           <i class="fa fa-beer"></i>
                           <span>Upstain</span></a>
                       </li>
@@ -163,7 +158,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-            <a class="nav-link" href="advices.html">
+            <a class="nav-link" href="advices.html?id=<?php echo $_SESSION['id']; ?>">
               <i class="fa fa-thumbs-up"></i>
               <span>Advices</span></a>
           </li>
@@ -177,9 +172,9 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="gym.html">GYM</a>
-            <a class="collapse-item" href="healthy_advices.html">Helthy Advice</a>
-            <a class="collapse-item" href="cooking_recipe.html">Cooking Receipe</a>
+            <a class="collapse-item" href="gym.html?id=<?php echo $_SESSION['id']; ?>">GYM</a>
+            <a class="collapse-item" href="healthy_advices.html?id=<?php echo $_SESSION['id']; ?>">Helthy Advice</a>
+            <a class="collapse-item" href="cooking_recipe.html?id=<?php echo $_SESSION['id']; ?>">Cooking Receipe</a>
 
           </div>
         </div>
@@ -191,7 +186,7 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="patient_terms&conditions.html">
+        <a class="nav-link" href="patient_terms&conditions.html?id=<?php echo $_SESSION['id']; ?>">
           <i class="fas fa-lock"></i>
           <span>Terms & Condition</span></a>
       </li>
