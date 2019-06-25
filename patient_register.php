@@ -233,6 +233,7 @@
                         $pEmail = $_POST['pEmail'];
                         $pCell = $_POST['pCell'];
                         $pSOS = $_POST['pSOS'];
+                        $pswd = $_POST['pPswd'];
                         $pAddr1 = $_POST['pAddr1'];
                         $pCity = $_POST['pCity'];
                         // Get guarantor data
@@ -251,19 +252,19 @@
                         // Query string
                         $query = "INSERT INTO users (pFstName,pLstName,pID
                                                     ,pCellNum,pAddr1,pCity,pEmail
-                                                    ,pSOSNum,gFstName,gLstName,gID
+                                                    ,pSOSNum, pPswd,gFstName,gLstName,gID
                                                     ,gCellNum,gAddr,gCity,iPlanType
                                                     ,iInsurer,iPlcyID,iContacts) 
                                               VALUES('$pFirstName','$pLastName','$pID'
                                                     ,'$pCell','$pAddr1','$pCity','$pEmail'
-                                                    ,'$pSOS','$gFirstName','$gLastName'
+                                                    ,'$pSOS','$pswd','$gFirstName','$gLastName'
                                                     ,'$gID','$gCell','$gAddr','$gCity'
                                                     ,'$iTypePlan','$insurer','$policyID','$iCell');";
                         // Upon registering, the system automatically creates user profile for new user      
                         $query .= "INSERT INTO patient_profile (idNum,fst_name,lst_name
                                                               ,pswd,cel_num,email)
                                               VALUES ('$pID','$pFirstName','$pLastName'
-                                              ,'$policyID','$pCell','$pEmail');"; 
+                                              ,'$pswd','$pCell','$pEmail');"; 
                                             
                         if(mysqli_multi_query($connStr, $query) == TRUE)
                         {
