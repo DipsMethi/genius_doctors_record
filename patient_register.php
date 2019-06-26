@@ -211,11 +211,7 @@
           <!--Avatar --> 
           
         <?php
-            // Displays alert message
-            function alert($msg)
-            {
-                echo "<script> alert($msg) </script>";
-            }
+            include "Utilities/JSUtil.php";
 
             // Check if REGISTER button is clicked
             if(isset($_POST['register']))
@@ -252,7 +248,7 @@
 
                         if($pswd == $pCPswd)
                         {
-                                // Query string
+                            // Query string
                             $query = "INSERT INTO users (pFstName,pLstName,pID
                                                         ,pCellNum,pAddr1,pCity,pEmail
                                                         ,pSOSNum, pPswd,gFstName,gLstName,gID
