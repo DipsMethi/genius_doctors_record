@@ -1,21 +1,16 @@
 
 <?php
+    include "Utilities/JSUtils.php";
     try
     {
         if( isValid($_POST['id'], $_POST['pswd']) )
-            header("location: patient_dashboard.php");
+            route("location: patient_dashboard.php");
         else
             alert("Invalid login credentials.");
     }
     catch(Exception $e)
     {
         alert($e);
-    }
-    
-    // Displays message box with $msg
-    function alert($msg)
-    {
-        echo "<script type='text/javascript'> alert('$msg'); </script>";
     }
 
     function isValid($id, $pswd)
@@ -35,7 +30,7 @@
         }
         catch(Exception $e)
         {
-            echo "<script> alert($e); </script>";
+            alert( $e->getMessage() );
         }
         finally
         {
