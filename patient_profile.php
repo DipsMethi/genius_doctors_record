@@ -1,6 +1,6 @@
 <?php
-    require_once("sessionManager.php");
-    require_once("JSUtil.php");
+    include_once('Utilities/JSUtil.php');
+    require_once("Utilities/sessionManager.php");
 
     try
     {
@@ -10,15 +10,15 @@
       if(isset($_POST['save']))
       {
           $pswd = $_POST['pswd'];
-          $cPassword = $_POST['confirmPassword'];
+          $cPassword = $_POST['cPswd'];
           
-          if( $cPassword == NULL || $cPassword != $pswd )
+          if( $cPassword == $pswd )
           {
-              alert("Password mismach.");
+              updateProfile($id);    
           } 
-          elseif ($pswd == $cPassword)
+          elseif ($pswd != $cPassword)
           {
-              updateProfile($id);
+            alert("Password mismach.");
           } 
       }
     }
@@ -32,7 +32,7 @@
         try
         {
             $conStr = mysqli_connect("localhost","root","","doctors_db");
-            $query = "SELECT * FROM patient_profile WHERE idNum='$id' ";
+            $query = "SELECT * FROM patient_profile WHERE idNum='$id'";
             $result = mysqli_query($conStr,$query);
             
             if(mysqli_num_rows($result) > 0)
@@ -40,7 +40,7 @@
         }
         catch(Exception $e)
         {
-            echo "<script> alert($e); </script>";
+            alert( $ex->getMessage() );
         }
         finally
         {
@@ -50,24 +50,24 @@
 
     function updateProfile($id)
     {
-        $fstName = $_SESSION['fstName'];
-        $lstName = $_SESSION['lstName'];
-        $pswd = $_SESSION['pswd'];
-        $email = $_SESSION['email'];
+        $fstName = $_REQUEST['fstName'];
+        $lstName = $_REQUEST['lstName'];
+        $pswd = $_REQUEST['pswd'];
+        $email = $_REQUEST['email'];
 
         $c = mysqli_connect("localhost","root", "", "doctors_db");
+        
         $q = "UPDATE patient_profile SET fst_name ='$fstName'
                                          ,lst_name ='$lstName'
                                          ,pswd ='$pswd'
                                          ,email ='$email'
                                      WHERE idNum='$id'";
-        if(mysqli_query($c,$q))
+        if(mysqli_query($c, $q))
         {
-            echo "<script>window.location.href = 'patient_dashboard.php'</script>";
+          route("patient_login.php");
         }
     }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -359,12 +359,12 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="patient_login.php" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['fstName']; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Signed in: <strong><?php echo $_SESSION['fstName']; ?></strong></span>
                 <img class="img-profile rounded-circle" src="img/images.jpg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="">
+                <a class="dropdown-item" href="images/images.jpg">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -390,12 +390,12 @@
           </div>
           <!--- Avatar -->
           <div class="avatar-wrapper">
-                <img class="profile-pic" src="" />
+                <img class="profile-pic" src="img/images.jpg" />
                 <div class="upload-button">
                     <i class="fa fa-home" aria-hidden="true"></i>
                 </div>
                 <input class="file-upload" type="file" accept="image/*"/>
-            </div> 
+          </div> 
 
           <!--- Form --->
           <div class="container-fluid">
@@ -413,13 +413,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" placeholder="First Name *"
-                                                            value="<?php echo $row[0]; ?>" id="firstName" name="firstName"/>
+                                                            value="<?php echo $row[0]; ?>" id="firstName" name="fstName"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="tel" class="form-control" placeholder="Last Name *"
-                                                            value="<?php echo $row[1]; ?>" id="lastName" name="lastName"/>
+                                                            value="<?php echo $row[1]; ?>" id="lastName" name="lstName"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -435,7 +435,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <input type="password" class="form-control" placeholder="Confirm Password  *"
-                                                            value="" id="confirmPassword" name="confirmPassword" required/>
+                                                            value="" id="confirmPassword" name="cPswd" required/>
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="email" class="form-control" placeholder="Email *"
@@ -451,8 +451,6 @@
                     </div>
                 </div>
             </div>  
-
-
         </div>
         <!-- /.container-fluid -->
 
