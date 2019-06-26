@@ -20,7 +20,6 @@
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Patient Login</h3>
-
               <form action="patient_dashboard.php" method="POST">
                   <div class="form-label-group">
                       <input type="text" id="idNumber" class="form-control" name="id"required>
