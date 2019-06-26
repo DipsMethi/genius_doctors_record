@@ -1,9 +1,9 @@
 <?php
 
-    require_once("sessionManager.php");
-    
-    $row = getMedicalProfile($_SESSION['id']); // Gets patients latest medical history 
+    include ("Utilities/sessionManager.php");
+    include_once ("Utilities/JSUtil.php");
 
+    $row = getMedicalProfile($_GET['id']); // Gets patients latest medical history 
     if((isset($_POST['save']) ))
     {
       try
@@ -24,7 +24,7 @@
       }
       catch(Exception $ex)
       {
-          alert( "Exception ex: " . $ex->getMessage() );
+          alert( $ex->getMessage() );
       }
       finally
       {
@@ -32,7 +32,7 @@
           mysqli_close($connStr);
 
           // Redirect to patient_dashboard.php
-          echo "<script> window.location.href = 'patient_dashboard.php'; </script>";       
+          route('patient_dashboard.php');      
       }    
     }
 
@@ -44,20 +44,22 @@
             $query = " SELECT * FROM patient_medical_record WHERE idNum=$id";
             //$query .= " SELECT fst_name,email FROM patient_profile WHERE idNum ='$id' ";
 
-            $result = mysqli_query($conStr,$query);
-            
-            if(mysqli_num_rows($result) > 0)
+            if($result = mysqli_query($conStr,$query))
+            {
+                if(mysqli_num_rows($result) > 0)
                 return mysqli_fetch_array($result);
+            }
         }
         catch(Exception $e)
         {
-            echo "<script> alert($e); </script>";
+            alert( $e->getMessage() );
         }
         finally
         {
             mysqli_close($conStr);
         }
     }
+
 
 ?>
 
@@ -340,7 +342,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="patient_login.php" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><strong><?php echo $_SESSION['fstName']; ?></strong></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><strong>Signed in: <?php echo $_SESSION['fstName']; ?></strong></span>
                 <img class="img-profile rounded-circle" src="img/images.jpg">
               </a>
               <!-- Dropdown - User Information -->
