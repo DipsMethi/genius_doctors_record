@@ -1,7 +1,7 @@
 
 <?php
 
-    include "Utilities/JSUtil.php";          // Import js utiliies 
+    include "Utilities/JSUtil.php";          
     include "Utilities/loginManager.php";
     include "Utilities/sessionManager.php";
     
@@ -12,8 +12,8 @@
 
         if( !isValid( $id , $pswd ) )
         {
-          alert('Incorrect id/password.\nPlease ensure you have registered.'); 
-          route('patient_login.php');
+            alert('Incorrect id/password.\nPlease ensure you have registered.'); 
+            route('patient_login.php');
         }
           
         $session = new Session( $id , $pswd );
@@ -52,7 +52,7 @@
             mysqli_close($conStr);
         }
     }
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -114,22 +114,22 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="patient_file.php?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
+        <a class="nav-link" href="patient_file.php?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
           <i class="fa fa-book"></i>
           <span>Patient File</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="allergies.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
+        <a class="nav-link" href="allergies.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
           <i class="fa fa-window-close"></i>
           <span>Allergies</span></a>
       </li>
       <li class="nav-item">
-            <a class="nav-link" href="next_appointment.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
+            <a class="nav-link" href="next_appointment.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
               <i class="fas fa-history"></i>
               <span>Next Appointment</span></a>
      </li>
       <li class="nav-item">
-        <a class="nav-link" href="calender.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
+        <a class="nav-link" href="calender.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
           <i class="fas fa-calendar"></i>
           <span>Calender</span></a>
       </li>
@@ -158,7 +158,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-            <a class="nav-link" href="advices.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
+            <a class="nav-link" href="advices.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
               <i class="fa fa-thumbs-up"></i>
               <span>Advices</span></a>
           </li>
@@ -350,12 +350,12 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><strong><?php echo $_SESSION['fstName']; ?></strong></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><strong>Signed in: <?php echo $_SESSION['fstName']; ?></strong></span>
                 <img class="img-profile rounded-circle" src="img/images.jpg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="patient_profile.php?id=<?php echo $_SESSION['id']; ?>">
+                <a class="dropdown-item" href="patient_profile.php?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -385,7 +385,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Welcome, <strong><?php echo $_SESSION['fstName']; ?></strong></h1>
+            <h1 class="h3 mb-0 text-gray-800">Welcome, <strong><?php echo $_SESSION['fstName']." ".$_SESSION['lstName']; ?>.</strong></h1>
             <!--<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
           </div>
 
@@ -690,7 +690,6 @@
             $('.fa-star').css('color', 'white');
         }
     </script>
- -->
                    
                   </div>
                 </div>
