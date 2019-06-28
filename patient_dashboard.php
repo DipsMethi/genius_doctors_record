@@ -1,9 +1,10 @@
+<!-- <//?php include("rateServer.php"); ?> -->
 
 <?php
 
     include "Utilities/JSUtil.php";          
     include "Utilities/loginManager.php";
-    include "Utilities/sessionManager.php";
+    require_once "Utilities/sessionManager.php";
     
     try
     {
@@ -34,7 +35,7 @@
         try
         {
             $conStr = mysqli_connect("localhost","root","","doctors_db");
-            $result = mysqli_query($conStr,"SELECT idNum,pswd 
+        $result = mysqli_query($conStr,"SELECT idNum,pswd 
                                 FROM patient_profile 
                                 WHERE idNum='$id' && pswd='$pswd'");
             
@@ -54,6 +55,11 @@
     }
 ?> 
 
+<?php
+$mysqli=new MySQLI('localhost','root','','doctors_db');
+$resultSet=$mysqli->query("SELECT name from doc_profile")
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -114,22 +120,22 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="patient_file.php?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
+        <a class="nav-link" href="patient_file.php">
           <i class="fa fa-book"></i>
           <span>Patient File</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="allergies.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
+        <a class="nav-link" href="allergies.html">
           <i class="fa fa-window-close"></i>
           <span>Allergies</span></a>
       </li>
       <li class="nav-item">
-            <a class="nav-link" href="next_appointment.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
+            <a class="nav-link" href="next_appointment.html">
               <i class="fas fa-history"></i>
               <span>Next Appointment</span></a>
      </li>
       <li class="nav-item">
-        <a class="nav-link" href="calender.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
+        <a class="nav-link" href="calender.html">
           <i class="fas fa-calendar"></i>
           <span>Calender</span></a>
       </li>
@@ -141,12 +147,12 @@
       
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                    <a class="nav-link" href="diet.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
+                    <a class="nav-link" href="diet.html">
                       <i class="fa fa-cart-plus"></i>
                       <span>Diet</span></a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="charts.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
+                        <a class="nav-link" href="charts.html">
                           <i class="fa fa-beer"></i>
                           <span>Upstain</span></a>
                       </li>
@@ -158,7 +164,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-            <a class="nav-link" href="advices.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
+            <a class="nav-link" href="advices.html">
               <i class="fa fa-thumbs-up"></i>
               <span>Advices</span></a>
           </li>
@@ -172,9 +178,9 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="gym.html?id=<?php echo $_SESSION['id']; ?>">GYM</a>
-            <a class="collapse-item" href="healthy_advices.html?id=<?php echo $_SESSION['id']; ?>">Helthy Advice</a>
-            <a class="collapse-item" href="cooking_recipe.html?id=<?php echo $_SESSION['id']; ?>">Cooking Receipe</a>
+            <a class="collapse-item" href="gym.html">GYM</a>
+            <a class="collapse-item" href="healthy_advices.html">Helthy Advice</a>
+            <a class="collapse-item" href="cooking_recipe.html">Cooking Receipe</a>
 
           </div>
         </div>
@@ -186,7 +192,7 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="patient_terms&conditions.html?id=<?php echo $_SESSION['id']; ?>">
+        <a class="nav-link" href="patient_terms&conditions.html">
           <i class="fas fa-lock"></i>
           <span>Terms & Condition</span></a>
       </li>
@@ -350,12 +356,12 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><strong>Signed in: <?php echo $_SESSION['fstName']; ?></strong></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Amanda</span>
                 <img class="img-profile rounded-circle" src="img/images.jpg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="patient_profile.php?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
+                <a class="dropdown-item" href="patient_profile.php">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -382,6 +388,16 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+
+         <?php
+              // Retrieving users name
+              // Connect to the database
+              $conn = mysqli_connect("localhost", "root", "", "doctors_db");
+              // Get current user's id
+              $userID = $_SESSION['id'];
+
+              //$query = "SELECT * From patient_profile WHERE idNum=$_SESSION['id']";
+          ?> 
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -587,7 +603,7 @@
             <div class="col-lg-6 mb-4">
 
               <!-- Project Card Example -->
-              <div class="card shadow mb-4">
+              <div class="card shadow mb-4" style="height:95%">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">WEATHER FORECAST</h6>
                 </div>
@@ -609,87 +625,60 @@
                 </div>
                 <div class="card-body">
                   <div class="text-center">
-                   <!-- <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
                    
-                   <div align="center" style="background: rgb(243, 243, 243); padding: 50px;color:white;">
-                    <i class="fa fa-star fa-2x" data-index="0"></i>
-                    <i class="fa fa-star fa-2x" data-index="1"></i>
-                    <i class="fa fa-star fa-2x" data-index="2"></i>
-                    <i class="fa fa-star fa-2x" data-index="3"></i>
-                    <i class="fa fa-star fa-2x" data-index="4"></i>
-                    <br><br>
-                    <?php echo round($avg,2) ?>
+                  <form name="Form" method="Post" action="retr.php">
+  <div class="form-group">
+    <select name="selDoc" id="product-select" class="form-control custom-select">
+        <option value="0" disabled selected>Select Doctor</option>
+        <option value="sony">
+          <?php
+          while($row = $resultSet->fetch_assoc())
+          {
+              $name = $row['name'];
+              echo "<option value='$name'>$name</option>";
+          }
+          ?>
+        </option>
+
+      </select>
+  </div>
+  <div class="form-group">
+    <!-- <input name="rate" type="number" id="rating-control" class="form-control" step="1" max="5" placeholder="Rate 1 - 5" disabled> -->
+    <input name="rate" type="number" id="rating-control" class="form-control" step="1" max="5" placeholder="Rate 1 - 5">
                    </div>
 
-                   -->
+  <button name="button" type"submit" class="btn btn-default" value"select">submit</button>
+  </form>
 
-                   <div align="center" style="background: rgb(243, 243, 243); padding: 50px;color:white;">
-                    <i class="fa fa-star fa-2x" data-index="0"></i>
-                    <i class="fa fa-star fa-2x" data-index="1"></i>
-                    <i class="fa fa-star fa-2x" data-index="2"></i>
-                    <i class="fa fa-star fa-2x" data-index="3"></i>
-                    <i class="fa fa-star fa-2x" data-index="4"></i>
-                    <br><br>
-                    <?php echo round($avg,2) ?>
-                   </div>
 
-                <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
-    <script>
-        var ratedIndex = -1, uID = 0;
 
-        $(document).ready(function () {
-            resetStarColors();
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Doctors name</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php
 
-            if (localStorage.getItem('ratedIndex') != null) {
-                setStars(parseInt(localStorage.getItem('ratedIndex')));
-                uID = localStorage.getItem('uID');
-            }
-
-            $('.fa-star').on('click', function () {
-               ratedIndex = parseInt($(this).data('index'));
-               localStorage.setItem('ratedIndex', ratedIndex);
-               saveToTheDB();
-            });
-
-            $('.fa-star').mouseover(function () {
-                resetStarColors();
-                var currentIndex = parseInt($(this).data('index'));
-                setStars(currentIndex);
-            });
-
-            $('.fa-star').mouseleave(function () {
-                resetStarColors();
-
-                if (ratedIndex != -1)
-                    setStars(ratedIndex);
-            });
-        });
-
-        function saveToTheDB() {
-            $.ajax({
-               url: "index.php",
-               method: "POST",
-               dataType: 'json',
-               data: {
-                   save: 1,
-                   uID: uID,
-                   ratedIndex: ratedIndex
-               }, success: function (r) {
-                    uID = r.id;
-                    localStorage.setItem('uID', uID);
-               }
-            });
+    $conn = mysqli_connect('localhost','root','','doctors_db');
+		if($qry = mysqli_query($conn,"SELECT * FROM doc_profile ORDER BY rate DESC limit 3")){
+			while($row = mysqli_fetch_assoc($qry)){
+				echo "<tr>";
+					echo "<td>".$row['name']."</td>";					
+					if($row['rate']==1){ echo "<td><i class='fa fa-star'></i></td>"; }
+					if($row['rate']==2){ echo "<td><i class='fa fa-star'></i><i class='fa fa-star'></i></td>"; }
+					if($row['rate']==3){ echo "<td><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i></td>"; }
+					if($row['rate']==4){ echo "<td><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i></td>"; }
+					if($row['rate']==5){ echo "<td><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i></td>"; }
+				echo "</tr>";
         }
-
-        function setStars(max) {
-            for (var i=0; i <= max; i++)
-                $('.fa-star:eq('+i+')').css('color', 'green');
         }
+    ?>
+    </tbody>
+  </table>
 
-        function resetStarColors() {
-            $('.fa-star').css('color', 'white');
-        }
-    </script>
                    
                   </div>
                 </div>
