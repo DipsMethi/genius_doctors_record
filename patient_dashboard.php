@@ -2,8 +2,8 @@
 <?php
 
     include "Utilities/JSUtil.php";          
-    include "Utilities/loginManager.php";
-    include "Utilities/sessionManager.php";
+    include "Utilities/LoginManager.php";
+    include_once "Utilities/SessionManager.php";
     
     try
     {
@@ -45,7 +45,7 @@
         }
         catch(Exception $e)
         {
-           alert( $se->getMessage() );
+           alert( $e->getMessage() );
         }
         finally
         {
@@ -114,22 +114,22 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="patient_file.php?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
+        <a class="nav-link" href="patient_file.php?<?php echo 'id='.$_SESSION['id'].'&pswd='.$_SESSION['pswd'];?>">
           <i class="fa fa-book"></i>
           <span>Patient File</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="allergies.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
+        <a class="nav-link" href="allergies.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$_SESSION['pswd'];?>">
           <i class="fa fa-window-close"></i>
           <span>Allergies</span></a>
       </li>
       <li class="nav-item">
-            <a class="nav-link" href="next_appointment.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
+            <a class="nav-link" href="next_appointment.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$_SESSION['pswd'];?>">
               <i class="fas fa-history"></i>
               <span>Next Appointment</span></a>
      </li>
       <li class="nav-item">
-        <a class="nav-link" href="calender.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
+        <a class="nav-link" href="calender.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$_SESSION['pswd'];?>">
           <i class="fas fa-calendar"></i>
           <span>Calender</span></a>
       </li>
@@ -141,12 +141,12 @@
       
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                    <a class="nav-link" href="diet.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
+                    <a class="nav-link" href="diet.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$_SESSION['pswd'];?>">
                       <i class="fa fa-cart-plus"></i>
                       <span>Diet</span></a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="charts.html?<?php echo 'id=' . $_SESSION['id'] . '&pswd=' . $pswd;?>">
+                        <a class="nav-link" href="charts.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$_SESSION['pswd'];?>">
                           <i class="fa fa-beer"></i>
                           <span>Upstain</span></a>
                       </li>
@@ -158,7 +158,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-            <a class="nav-link" href="advices.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$pswd;?>">
+            <a class="nav-link" href="advices.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$_SESSION['pswd'];?>">
               <i class="fa fa-thumbs-up"></i>
               <span>Advices</span></a>
           </li>
@@ -172,9 +172,9 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="gym.html?id=<?php echo $_SESSION['id']; ?>">GYM</a>
-            <a class="collapse-item" href="healthy_advices.html?id=<?php echo $_SESSION['id']; ?>">Helthy Advice</a>
-            <a class="collapse-item" href="cooking_recipe.html?id=<?php echo $_SESSION['id']; ?>">Cooking Receipe</a>
+            <a class="collapse-item" href="gym.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$_SESSION['pswd'];?>">GYM</a>
+            <a class="collapse-item" href="healthy_advices.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$_SESSION['pswd'];?>">Helthy Advice</a>
+            <a class="collapse-item" href="cooking_recipe.html?<?php echo 'id='.$_SESSION['id'].'&pswd='.$_SESSION['pswd'];?>">Cooking Receipe</a>
 
           </div>
         </div>
