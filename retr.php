@@ -10,6 +10,6 @@ $sql = "UPDATE pat_profile SET `rate`='$rat' WHERE `name`='$sel'";
 mysqli_query($conn, $sql);
 
 
-header("location:index.php")
+header("location:patient_dashboard.php");
 
 ?>
