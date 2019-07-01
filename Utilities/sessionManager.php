@@ -10,7 +10,7 @@
     {
         try
         {
-            $sql= "SELECT * FROM patient_profile where idNum='$id' && pswd='$pswd'";
+            $sql= "SELECT * FROM patient_profile WHERE idNum='$id' && pswd='$pswd'";
             if($qry = mysqli_query($con, $sql))
             {        
                 $result = mysqli_fetch_array($qry);
@@ -36,5 +36,4 @@
             mysqli_close($con);
         }
     } 		  
-    
 ?> 
