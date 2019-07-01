@@ -2,9 +2,9 @@
 
 <?php
 
-    include "Utilities/JSUtil.php";          
-    include "Utilities/loginManager.php";
-    require_once "Utilities/sessionManager.php";
+    include ("Utilities/JSUtil.php");          
+    include ("Utilities/loginManager.php");
+    require_once ("Utilities/sessionManager.php");
     
     try
     {
@@ -34,15 +34,24 @@
     {
         try
         {
-            $conStr = mysqli_connect("localhost","root","","doctors_db");
-        $result = mysqli_query($conStr,"SELECT idNum,pswd 
-                                FROM patient_profile 
-                                WHERE idNum='$id' && pswd='$pswd'");
-            
-            if(mysqli_num_rows($result) > 0)
-                return true;
+            if( !empty($id) && !empty($pswd) )
+            {
+              $conStr = mysqli_connect("localhost","root","","doctors_db");
+              $result = mysqli_query($conStr,"SELECT idNum,pswd 
+                                  FROM patient_profile 
+                                  WHERE idNum='$id' && pswd='$pswd'");
+              
+              if(mysqli_num_rows($result) > 0)
+                  return true;
+              else
+                  return false;
+            }
             else
-                return false;
+            {
+              alert("Please enter ID and/ Password.");
+              route('patient_login.php');
+            } 
+            
         }
         catch(Exception $e)
         {
@@ -120,22 +129,22 @@ $resultSet=$mysqli->query("SELECT name from doc_profile")
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="patient_file.php">
+        <a class="nav-link" href="patient_file.php?<?php echo 'id=' . $_SESSION['id'] . $_SESSION['pswd']; ?>">
           <i class="fa fa-book"></i>
           <span>Patient File</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="allergies.html">
+        <a class="nav-link" href="allergies.html?<?php echo 'id=' . $_SESSION['id'] . $_SESSION['pswd']; ?>">
           <i class="fa fa-window-close"></i>
           <span>Allergies</span></a>
       </li>
       <li class="nav-item">
-            <a class="nav-link" href="next_appointment.html">
+            <a class="nav-link" href="next_appointment.html?<?php echo 'id=' . $_SESSION['id'] . $_SESSION['pswd']; ?>">
               <i class="fas fa-history"></i>
               <span>Next Appointment</span></a>
      </li>
       <li class="nav-item">
-        <a class="nav-link" href="calender.html">
+        <a class="nav-link" href="calender.html?<?php echo 'id=' . $_SESSION['id'] . $_SESSION['pswd']; ?>">
           <i class="fas fa-calendar"></i>
           <span>Calender</span></a>
       </li>
@@ -178,9 +187,9 @@ $resultSet=$mysqli->query("SELECT name from doc_profile")
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="gym.html">GYM</a>
-            <a class="collapse-item" href="healthy_advices.html">Helthy Advice</a>
-            <a class="collapse-item" href="cooking_recipe.html">Cooking Receipe</a>
+            <a class="collapse-item" href="gym.html?<?php echo 'id=' . $_SESSION['id'] . $_SESSION['pswd']; ?>">GYM</a>
+            <a class="collapse-item" href="healthy_advices.html?<?php echo 'id=' . $_SESSION['id'] . $_SESSION['pswd']; ?>">Helthy Advice</a>
+            <a class="collapse-item" href="cooking_recipe.htm?<?php echo 'id=' . $_SESSION['id'] . $_SESSION['pswd']; ?>l">Cooking Receipe</a>
 
           </div>
         </div>
@@ -192,7 +201,7 @@ $resultSet=$mysqli->query("SELECT name from doc_profile")
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="patient_terms&conditions.html">
+        <a class="nav-link" href="patient_terms&conditions.html?<?php echo 'id=' . $_SESSION['id'] . $_SESSION['pswd']; ?>">
           <i class="fas fa-lock"></i>
           <span>Terms & Condition</span></a>
       </li>
@@ -356,7 +365,7 @@ $resultSet=$mysqli->query("SELECT name from doc_profile")
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Amanda</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><strong>Signed in: </strong><?php echo $_SESSION['fstName']; ?></span>
                 <img class="img-profile rounded-circle" src="img/images.jpg">
               </a>
               <!-- Dropdown - User Information -->
