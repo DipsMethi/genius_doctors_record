@@ -9,7 +9,7 @@ $prescription = $_POST['prescription'];*/
 
 require 'C:\xampp\htdocs\genius_doctors_record\fpdf.php';
 include ("Utilities/JSUtil.php");
-include_once ("Utilities/sessionManager.php");
+include_once ("Utilities/SessionManager.php");
 
     if(isset($_POST['report']))
     {
