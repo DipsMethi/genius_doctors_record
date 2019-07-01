@@ -1,6 +1,6 @@
 <?php
-    include_once('Utilities/JSUtil.php');
-    require_once("Utilities/sessionManager.php");
+    include_once ('Utilities/JSUtil.php');
+    require_once ("Utilities/SessionManager.php");
 
     try
     {
@@ -40,7 +40,7 @@
         }
         catch(Exception $e)
         {
-            alert( $ex->getMessage() );
+            alert( $e->getMessage() );
         }
         finally
         {
