@@ -1,6 +1,6 @@
 <?php
-    require_once ("PHP/Utilities/JSUtil.php");
-    include ("PHP/Utilities/MailManager.php");
+    include_once ("PHP/Utilities/JSUtil.php");
+    include_once ("PHP/Utilities/MailManager.php");
 
     // Checks if RESET PASSWORD is clicked
     if(isset($_POST['btnReset']))
@@ -21,13 +21,13 @@
                 // Capture password
                 $pswd = $profile[1];
                 // Stage an email
-                $emailManager->stageMail($email, "Password RESET"
+                $emailManager::stage($email, "Password RESET"
                                         , "Below are your profile details\n\nID: $id\nPassword: $pswd"
                                         , "From: dipolelodips@gmail.com");
                 // Send email
                 $emailManager::send();    
             }
-            else alert("No such user exists.");
+            else alert("User <b> $email </b> does not exist.");
         }
         catch(Exception $e )
         {
