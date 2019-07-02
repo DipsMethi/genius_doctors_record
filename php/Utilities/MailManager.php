@@ -13,7 +13,11 @@
             self::$message = "";
             self::$arrHeaders = "";
         }
-        // Prepares the email
+
+        /* Prepares the email 
+        -- Warning: Inkvoke before calling any other function.
+        -- Ideally, it should be invoked after constructor.
+        */
         public static function stage($recipient, $subject, $message, $arrHeaders)
         {
             self::$recipient = $recipient;
