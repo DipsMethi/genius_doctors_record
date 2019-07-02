@@ -1,6 +1,5 @@
-
 <?php
-    require_once 'JSUtil.php';
+    require_once ("PHP/Utilities/JSUtil.php");
     session_start();
 
     $id = $_REQUEST['id'];
@@ -27,9 +26,9 @@
             }
             else alert("Error querying the database. \nPlease ensure that a connection is established or the database exists.");       
         }
-        catch(Exception $e)
+        catch(Exception $exception)
         {
-            alert($e);
+            alert($exception);
         }
         finally
         {
