@@ -1,5 +1,5 @@
 <?php
-    include_once ("Utilities/JSUtil.php");
+    include_once ("PHP/Utilities/JSUtil.php");
 
     // Check if REGISTER button is clicked
     if(isset($_POST['register']))
@@ -54,20 +54,9 @@
                                             ,'$pswd','$pCell','$pEmail');"; 
                                         
                     if(mysqli_multi_query($connStr, $query) == TRUE)
-                    {
-                        // Display modal and redirect to patient login
-                        echo "<script>
-                                // Show alert after successful registration
-                                //alert(\"Thank you for registering.\");
-                            
-                                // Redirecting to patient_login.php
-                                window.location.href = 'patient_login.php';
-                                </script>";
-                    }
+                        route('patient_login.php');
                     else
-                    {
-                        echo "<script> alert(\"Some internal error has occured.\nPlease register later.\"); </script>";
-                    }
+                        alert("Some internal error has occured.\nPlease register later.");
                 }
                 else alert("Passwords mismatch");
             } 
@@ -75,7 +64,7 @@
         catch(Exception $ex)
         {
             // Alert exception
-            alert('Exception: ' . $ex->getMessage());
+            alert("Exception: " . $ex->getMessage());
         }
         finally
         {
