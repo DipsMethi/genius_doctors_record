@@ -1,6 +1,6 @@
 <?php
     include_once ("PHP/Utilities/JSUtil.php");
-    require_once ("PHP/Utilities/SessionManager.php");
+    include_once ("PHP/Utilities/SessionManager.php");
 
     try
     {
