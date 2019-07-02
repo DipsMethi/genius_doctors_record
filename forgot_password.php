@@ -1,4 +1,4 @@
-<?php include ("php/ForgotPasswordPreprocessor.php") ?>
+<?php include ("PHP/ForgotPasswordPreprocessor.php") ?>
 
 <!DOCTYPE html>
 <html lang="en">
