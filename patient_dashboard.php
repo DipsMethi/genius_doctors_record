@@ -571,19 +571,8 @@
     <select name="selDoc" id="product-select" class="form-control custom-select">
         <option value="0" disabled selected>Select Doctor</option>
         <option value="sony">
-          <?php
-
-          $mysqli=new MySQLI('localhost','root','','doctors_db');
-          $resultSet=$mysqli->query("SELECT name from doc_profile");
-
-          while($row = $resultSet->fetch_assoc())
-          {
-              $name = $row['name'];
-              echo "<option value='$name'>$name</option>";
-          }
-          ?>
+          <?php printOptions(); ?>
         </option>
-
       </select>
   </div>
   <div class="form-group">
@@ -593,9 +582,6 @@
 
   <button name="button" type"submit" class="btn btn-default" value"select">submit</button>
   </form>
-
-
-
   <table class="table table-condensed">
     <thead>
       <tr>
@@ -604,22 +590,7 @@
       </tr>
     </thead>
     <tbody>
-    <?php
-
-    $conn = mysqli_connect('localhost','root','','doctors_db');
-		if($qry = mysqli_query($conn,"SELECT * FROM doc_profile ORDER BY rate DESC limit 3")){
-			while($row = mysqli_fetch_assoc($qry)){
-				echo "<tr>";
-					echo "<td>".$row['name']."</td>";					
-					if($row['rate']==1){ echo "<td><i class='fa fa-star'></i></td>"; }
-					if($row['rate']==2){ echo "<td><i class='fa fa-star'></i><i class='fa fa-star'></i></td>"; }
-					if($row['rate']==3){ echo "<td><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i></td>"; }
-					if($row['rate']==4){ echo "<td><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i></td>"; }
-					if($row['rate']==5){ echo "<td><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i></td>"; }
-				echo "</tr>";
-        }
-        }
-    ?>
+    <?php printTopThree(); ?>
     </tbody>
   </table>
 
