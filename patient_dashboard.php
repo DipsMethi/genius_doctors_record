@@ -1,74 +1,5 @@
-<!-- <//?php include("rateServer.php"); ?> -->
+<?php include_once ("PHP/Backend/PatientDashboardPreprocessor.php"); ?>
 
-<?php
-
-    include "Utilities/JSUtil.php";          
-    include "Utilities/LoginManager.php";
-    include_once "Utilities/SessionManager.php";
-    
-    try
-    {
-        $id = $_POST['id'];
-        $pswd = $_POST['pswd'];
-
-        if( !isValid( $id , $pswd ) )
-        {
-            alert('Incorrect id/password.\nPlease ensure you have registered.'); 
-            route('patient_login.php');
-        }
-          
-        $session = new Session( $id , $pswd );
-
-        if( !$session->login($id, $pswd) ) 
-        { 
-            //alert('Incorrect id/password.\nPlease ensure you have registered.'); 
-            //route('patient_login.php');
-        }
-    }
-    catch(Exception $e)
-    {
-        alert( $e->getMessage() );
-    }
-
-    function isValid($id, $pswd)
-    {
-        try
-        {
-            if( !empty($id) && !empty($pswd) )
-            {
-              $conStr = mysqli_connect("localhost","root","","doctors_db");
-              $result = mysqli_query($conStr,"SELECT idNum,pswd 
-                                  FROM patient_profile 
-                                  WHERE idNum='$id' && pswd='$pswd'");
-              
-              if(mysqli_num_rows($result) > 0)
-                  return true;
-              else
-                  return false;
-            }
-            else
-            {
-              alert("Please enter ID and/ Password.");
-              route('patient_login.php');
-            } 
-            
-        }
-        catch(Exception $e)
-        {
-           alert( $e->getMessage() );
-        }
-        finally
-        {
-            mysqli_close($conStr);
-        }
-    }
-?> 
-
-<?php
-$mysqli=new MySQLI('localhost','root','','doctors_db');
-$resultSet=$mysqli->query("SELECT name from doc_profile")
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -365,7 +296,7 @@ $resultSet=$mysqli->query("SELECT name from doc_profile")
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><strong>Signed in: </strong><?php echo $_SESSION['fstName']; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Signed in: <strong><?php echo $_SESSION['fstName']; ?></strong></span>
                 <img class="img-profile rounded-circle" src="img/images.jpg">
               </a>
               <!-- Dropdown - User Information -->
@@ -641,6 +572,10 @@ $resultSet=$mysqli->query("SELECT name from doc_profile")
         <option value="0" disabled selected>Select Doctor</option>
         <option value="sony">
           <?php
+
+          $mysqli=new MySQLI('localhost','root','','doctors_db');
+          $resultSet=$mysqli->query("SELECT name from doc_profile");
+
           while($row = $resultSet->fetch_assoc())
           {
               $name = $row['name'];
@@ -737,7 +672,25 @@ $resultSet=$mysqli->query("SELECT name from doc_profile")
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="patient_login.php">Logout</a>
+          <a class="btn btn-primary" href="index.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Information modal -->
+  <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Information</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <a class="btn btn-primary" href="index.html">OK</a>
         </div>
       </div>
     </div>
