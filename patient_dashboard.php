@@ -301,7 +301,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="patient_profile.php">
+                <a class="dropdown-item" href="patient_profile.php?<?php echo 'id='.$_SESSION['id'].'&pswd='.$_SESSION['pswd'];?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -328,20 +328,9 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-         <?php
-              // Retrieving users name
-              // Connect to the database
-              $conn = mysqli_connect("localhost", "root", "", "doctors_db");
-              // Get current user's id
-              $userID = $_SESSION['id'];
-
-              //$query = "SELECT * From patient_profile WHERE idNum=$_SESSION['id']";
-          ?> 
-
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Welcome, <strong><?php echo $_SESSION['fstName']." ".$_SESSION['lstName']; ?>.</strong></h1>
+            <h1 class="h3 mb-0 text-gray-800">Welcome, <strong><?php echo $_SESSION['fstName']." ".$_SESSION['lstName']; ?></strong></h1>
             <!--<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
           </div>
 
